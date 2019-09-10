@@ -1,0 +1,45 @@
+I use the following guide for setting up Windows 10 for a new HTPC:
+
+If doing a fresh install from an existing HTPC:
+- Consider saving the AppData\Roaming\Kodi folder
+- Save the Documents folder
+
+
+During Initial Install:
+- Select US, English for language and keyboard 
+- Use a Local offline user account
+- Do not set a password, pin or other methods to login in
+- Do not enable Cortana
+
+After Install completes:
+- If previously saved, restore the Kodi and Documents folders
+- Install TightVNC server.  For me I install without login or admin password
+- Disable Notifications
+- Install Kodi
+- Install RestartOnCrash, Add Kodi
+- Set the static IP
+- Turn off lock screen
+- Turn on file sharing without Password in Network Settings
+- Set the Restart Active time to suit theatre use
+- Set the Power profile
+  - Max performance
+  - turn off USB power savings
+  - Set display to go to sleep to Never
+  - Set Lid and Power buttons to disabled
+  - Set to never go to sleep automatically
+- Disable Screen saver
+- Under Control Panel > System and Security > System:
+  - Set the Computer Name and Workgroup
+  - Under Advanced System Settings
+    - System Failure "Automatically Restart"
+	- Disable Write Debugging information (for faster restarts)
+-Set graphics Adapter to 1920x1080x60hz (non-interlaced)
+-Uninstall all unneeded Windows junkware
+
+
+Personal Config:
+- Install BrodieTheatre App, add to RestartonCrash
+- Create Documents\Shared and then Enable the File Sharing for that folder
+- Set desktop background to black
+- Remove Recycle bin icon:  Taskbar Settings > Turn system icons on or off
+- Move the Taskbar to the top of the screen and lock
