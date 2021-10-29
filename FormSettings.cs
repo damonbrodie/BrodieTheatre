@@ -2,7 +2,6 @@
 using System.IO;
 using System.IO.Ports;
 using System.Windows.Forms;
-using GoogleCast;
 using System.Collections.Generic;
 
 
@@ -10,7 +9,6 @@ namespace BrodieTheatre
 {
     public partial class FormSettings : Form
     {
-        private IEnumerable<IReceiver> receivers;
 
         public FormSettings()
         {
@@ -35,7 +33,6 @@ namespace BrodieTheatre
             Properties.Settings.Default.projectorPort               = comboBoxProjectorPort.Text;
             Properties.Settings.Default.potsAddress                 = textBoxPotsAddress.Text;
             Properties.Settings.Default.trayAddress                 = textBoxTrayAddress.Text;
-            Properties.Settings.Default.fanAddress                  = textBoxExhaustFanAddress.Text;
             Properties.Settings.Default.trayPlaybackLevel           = trackBarTrayPlayback.Value;
             Properties.Settings.Default.potsPlaybackLevel           = trackBarPotsPlayback.Value;
             Properties.Settings.Default.trayPausedLevel             = trackBarTrayPaused.Value;
@@ -44,7 +41,6 @@ namespace BrodieTheatre
             Properties.Settings.Default.potsStoppedLevel            = trackBarPotsStopped.Value;
             Properties.Settings.Default.trayEnteringLevel           = trackBarTrayEntering.Value;
             Properties.Settings.Default.potsEnteringLevel           = trackBarPotsEntering.Value;
-            Properties.Settings.Default.globalShutdown              = trackBarGlobalShutdown.Value;
             Properties.Settings.Default.motionSensorAddress         = textBoxMotionSensorAddress.Text;
             Properties.Settings.Default.doorSensorAddress           = textBoxDoorSensorAddress.Text;
             Properties.Settings.Default.startMinimized              = checkBoxStartMinimized.Checked;
@@ -52,86 +48,22 @@ namespace BrodieTheatre
             Properties.Settings.Default.kodiIP                      = textBoxKodiIP.Text;
             Properties.Settings.Default.insteonMotionLatch          = trackBarInsteonMotionMinimumTime.Value;
             Properties.Settings.Default.lightingDelayProjectorOn    = trackBarDelayLightingProjectorStart.Value;
-            Properties.Settings.Default.fanDelayOff                 = trackBarExhaustFanDelayOff.Value;
-            Properties.Settings.Default.googleCloudCredentialsJSON  = textBoxGoogleCredentialsFile.Text;
-            Properties.Settings.Default.webServerAuthToken          = textBoxAuthToken.Text;
-
-            ComboboxSmartSpeakerItem item = comboBoxSmartSpeakers.SelectedItem as ComboboxSmartSpeakerItem;
-            if (item != null)
-            {
-                Properties.Settings.Default.SmartSpeaker = item.Id.ToString();
-            }
-            else
-            {
-                Properties.Settings.Default.SmartSpeaker = "";
-            }
-            
 
             Properties.Settings.Default.Save();
             this.Close();
         }
 
-        private async void FormSettings_Load(object sender, EventArgs e)
+        private void FormSettings_Load(object sender, EventArgs e)
         {
-            string ip = Network.GetLocalIPAddress();
-
             checkBoxStartMinimized.Checked  = Properties.Settings.Default.startMinimized;
             textBoxHarmonyHubIP.Text        = Properties.Settings.Default.harmonyHubIP;
             numericUpDownKodiPort.Value     = (decimal)Properties.Settings.Default.kodiJSONPort;
             textBoxKodiIP.Text              = Properties.Settings.Default.kodiIP;
             textBoxPotsAddress.Text         = Properties.Settings.Default.potsAddress;
             textBoxTrayAddress.Text         = Properties.Settings.Default.trayAddress;
-            textBoxExhaustFanAddress.Text   = Properties.Settings.Default.fanAddress;
             textBoxMotionSensorAddress.Text = Properties.Settings.Default.motionSensorAddress;
             textBoxDoorSensorAddress.Text   = Properties.Settings.Default.doorSensorAddress;
-            textBoxAuthToken.Text           = Properties.Settings.Default.webServerAuthToken;
-            labelWebServerPort.Text         = Properties.Settings.Default.webServerPort.ToString();
-            labelWebServerIP.Text           = ip;
-
-            if (Network.IsPortListening(ip, Properties.Settings.Default.webServerPort))
-            {
-                labelwebServerStatus.Text = "Listening";
-                labelwebServerStatus.ForeColor = System.Drawing.Color.ForestGreen;
-            }
-
-            else
-            {
-                labelwebServerStatus.Text = "Not Listening";
-                labelwebServerStatus.ForeColor = System.Drawing.Color.Maroon;
-            }
-
-            if (File.Exists(Properties.Settings.Default.googleCloudCredentialsJSON))
-            {
-                textBoxGoogleCredentialsFile.Text = Properties.Settings.Default.googleCloudCredentialsJSON;
-            }
-
-            receivers = await new DeviceLocator().FindReceiversAsync();
-            foreach (var receiver in receivers)
-            {
-                ComboboxSmartSpeakerItem item = new ComboboxSmartSpeakerItem
-                {
-                    Text = receiver.FriendlyName,
-                    Id = receiver.Id
-                };
-                int index = comboBoxSmartSpeakers.Items.Add(item);
-                if (receiver.Id == Properties.Settings.Default.SmartSpeaker)
-                {
-                    comboBoxSmartSpeakers.SelectedIndex = index;
-                }
-            }
-
-            try
-            {
-                trackBarExhaustFanDelayOff.Value = Properties.Settings.Default.fanDelayOff;
-            }
-            catch (Exception ex)
-            {
-                if (ex is ArgumentOutOfRangeException)
-                {
-                    trackBarExhaustFanDelayOff.Value = trackBarExhaustFanDelayOff.Maximum;
-                }
-            }
-
+   
             try
             {
                 trackBarDelayLightingProjectorStart.Value = Properties.Settings.Default.lightingDelayProjectorOn;
@@ -242,18 +174,6 @@ namespace BrodieTheatre
 
             try
             {
-                trackBarGlobalShutdown.Value = Properties.Settings.Default.globalShutdown;
-            }
-            catch (Exception ex)
-            {
-                if (ex is ArgumentOutOfRangeException)
-                {
-                    trackBarGlobalShutdown.Value = trackBarGlobalShutdown.Minimum;
-                }
-            }
-
-            try
-            {
                 trackBarInsteonMotionMinimumTime.Value = Properties.Settings.Default.insteonMotionLatch;
             }
             catch (Exception ex)
@@ -320,19 +240,6 @@ namespace BrodieTheatre
             labelPotsEntering.Text = (trackBarPotsEntering.Value * 10).ToString() + "%";
         }
 
-        private void trackBarGlobalShutdown_ValueChanged(object sender, EventArgs e)
-        {
-            if (trackBarGlobalShutdown.Value == 1)
-            {
-                labelGlobalShutdownHours.Text = "minute";
-            }
-            else
-            {
-                labelGlobalShutdownHours.Text = "minutes";
-            }
-            labelGlobalShutdown.Text = trackBarGlobalShutdown.Value.ToString();
-        }
-
         private void trackBarInsteonMotionMinimumTime_ValueChanged(object sender, EventArgs e)
         {
             labelInsteonMotionLatch.Text = trackBarInsteonMotionMinimumTime.Value.ToString();
@@ -350,26 +257,5 @@ namespace BrodieTheatre
             }
         }
 
-        private void trackBarExhaustFanDelayOff_ValueChanged(object sender, EventArgs e)
-        {
-            if (trackBarExhaustFanDelayOff.Value == trackBarExhaustFanDelayOff.Minimum)
-            {
-                labelExhaustFanDelayOffMinutes.Text = "";
-                labelExhaustFanDelayOff.Text = "Off";
-            }
-            else
-            {
-                labelExhaustFanDelayOffMinutes.Text = "minutes";
-                labelExhaustFanDelayOff.Text = trackBarExhaustFanDelayOff.Value.ToString();
-            }
-        }
-
-        private void buttonSelectCredentials_Click(object sender, EventArgs e)
-        {
-            if(openFileDialogGoogleCredentials.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            {
-                textBoxGoogleCredentialsFile.Text = openFileDialogGoogleCredentials.FileName;
-            }
-        }
     }
 }

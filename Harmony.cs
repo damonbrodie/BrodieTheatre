@@ -27,6 +27,8 @@ namespace BrodieTheatre
             var currentActivityID = "";
             formMain.BeginInvoke(new Action(() =>
             {
+                formMain.labelHarmonyStatus.Text = "Disconnected";
+                formMain.labelHarmonyStatus.ForeColor = System.Drawing.Color.Maroon;
                 Logging.writeLog("Harmony:  Connecting to Hub");
             }));
             try
@@ -36,6 +38,8 @@ namespace BrodieTheatre
                 currentActivityID = await Program.Client.GetCurrentActivityAsync();
                 formMain.BeginInvoke(new Action(() =>
                 {
+                    formMain.labelHarmonyStatus.Text = "Connected";
+                    formMain.labelHarmonyStatus.ForeColor = System.Drawing.Color.ForestGreen;
                     Logging.writeLog("Harmony:  Connected to Hub, current activity ID is '" + currentActivityID + "'");
                 }));
                 if (currentActivityID != "-1")
@@ -80,7 +84,6 @@ namespace BrodieTheatre
                 {
                     formMain.projectorPowerOff();
                     formMain.lightsToEnteringLevel();
-                    formMain.fanDelayPowerOff();
                 }));
             }
             else
@@ -94,7 +97,6 @@ namespace BrodieTheatre
                     }
                     formMain.projectorPowerOn();
                     formMain.setDelayedLightTimer();
-                    formMain.fanPowerOn();
                 }));
             }
         }
@@ -126,7 +128,6 @@ namespace BrodieTheatre
                                 {
                                     Logging.writeLog("Harmony:  Activity disabled - Powering off projector");
                                     formMain.projectorPowerOff();
-                                    formMain.fanDelayPowerOff();
                                 }));
                             }
                             else if (labelProjectorPower.Text == "Off" && activity.Id != "-1")
@@ -136,15 +137,7 @@ namespace BrodieTheatre
                                 {
                                     Logging.writeLog("Harmony:  Activity enabled - Powering on projector");
                                     formMain.projectorPowerOn();
-                                    formMain.fanPowerOn();
                                     formMain.setDelayedLightTimer();
-                                }));
-                            }
-                            if (Convert.ToInt32(activity.Id) >= 0)
-                            {
-                                formMain.BeginInvoke(new Action(() =>
-                                {
-                                    formMain.ResetGlobalTimer();
                                 }));
                             }
                         }
@@ -176,10 +169,11 @@ namespace BrodieTheatre
 
         public bool HarmonyIsActivityStarted()
         {
+            Logging.writeLog("Harmony:  Current Activity is: " + labelCurrentActivity.Text);
             if (labelCurrentActivity.Text == "PowerOff" || labelCurrentActivity.Text == String.Empty)
             {
                 return false;
-            }
+            }  
             return true;
         }
 
@@ -277,6 +271,8 @@ namespace BrodieTheatre
                     formMain.BeginInvoke(new Action(() =>
                     {
                         formMain.toolStripStatus.Text = "Harmony Timeout - reconnecting";
+                        formMain.labelHarmonyStatus.Text = "Disconnected";
+                        formMain.labelHarmonyStatus.ForeColor = System.Drawing.Color.Maroon;
                         Logging.writeLog("Harmony:  Error starting activity");
                     }));
                     Program.Client.Dispose();
@@ -307,7 +303,7 @@ namespace BrodieTheatre
 
         private async void TimerHarmonyPoll_Tick(object sender, EventArgs e)
         {
-            timerHarmonyPoll.Interval = 60000;          
+            timerHarmonyPoll.Interval = 60000;
             if (labelHarmonyStatus.Text == "Connected")
             {
                 var currentActivityID = "";
@@ -318,20 +314,14 @@ namespace BrodieTheatre
                 }
                 catch
                 {
-                    if (debugHarmony)
-                    {
-                        formMain.BeginInvoke(new Action(() =>
-                        {
-                            Logging.writeLog("Harmony:  Error Polling Hub");
-                        }));
-                    }
+                    Logging.writeLog("Harmony:  Error Polling Hub");
                     formMain.BeginInvoke(new Action(() =>
                     {
                         formMain.toolStripStatus.Text = "Error polling Harmony Hub";
                     }));
                     error = true;
                 }
-                
+
                 if (!error)
                 {
                     await doDelay(3000);
@@ -344,6 +334,10 @@ namespace BrodieTheatre
                         formMain.toolStripStatus.Text = "Poll Harmony Hub for updated activities";
                     }));
                     return;
+                }
+                else 
+                {
+                    Logging.writeLog("Harmony:  Error polling for activity - will atttempt reconnect");
                 }
             }
             await HarmonyConnectAsync(true);

@@ -122,14 +122,6 @@ namespace BrodieTheatre
                         Logging.writeLog("Insteon:  Received Tray dimmer update from PLM - level '" + level.ToString() + "'");
                         formMain.trackBarTray.Value = level;
                     }));
-                    if (level > 0)
-                    {
-                        formMain.BeginInvoke(new Action(() =>
-                        {
-                            //Only need to reset the timer if it is on
-                            formMain.ResetGlobalTimer();
-                        }));
-                    }
                 }
             }
             else if (address == Properties.Settings.Default.potsAddress)
@@ -142,14 +134,6 @@ namespace BrodieTheatre
                         Logging.writeLog("Insteon:  Received Pots dimmer update from PLM - level '" + level.ToString() + "'");
                         formMain.trackBarPots.Value = level;
                     }));
-                    if (level > 0)
-                    {
-                        formMain.BeginInvoke(new Action(() =>
-                        {
-                            //Only need to reset the timer if it is on
-                            formMain.ResetGlobalTimer();
-                        }));
-                    }
                 }
             }
             else if (address == Properties.Settings.Default.motionSensorAddress)
@@ -211,26 +195,7 @@ namespace BrodieTheatre
                     }));
                 }
             }
-            else if (address == Properties.Settings.Default.fanAddress)
-            {
-                level = insteonProcessSwitchMessage(desc, address);
-                if (level > 0)
-                {
-                    formMain.BeginInvoke(new Action(() =>
-                    {
-                        Logging.writeLog("Insteon:  Received Fan Switch update from PLM - 'On'");
-                        formMain.updateFanStatus(true);
-                    }));
-                }
-                else if (level == 0)
-                {
-                    formMain.BeginInvoke(new Action(() =>
-                    {
-                        Logging.writeLog("Insteon:  Received Fan Switch update from PLM - 'Off'");
-                        formMain.updateFanStatus(false);
-                    }));
-                }
-            }
+           
             else
             {
                 Logging.writeLog("Insteon:  Received unknown device message from address '" + address + "' message '" + desc + "'");
@@ -299,10 +264,6 @@ namespace BrodieTheatre
                     {
                         lights[address] = -1;
                         Logging.writeLog("Insteon:  Set light '" + address + "' to level '" + level.ToString() + "'");
-                        if (toInt > 0)
-                        {
-                            ResetGlobalTimer();
-                        }
                         return;
                     }
                     counter++;
@@ -420,7 +381,6 @@ namespace BrodieTheatre
             }
             vacancyWarning = false;
             labelRoomOccupancy.Text = "Occupied";
-            ResetGlobalTimer();
             insteonMotionLatchActive = false;
         }
 
@@ -434,19 +394,6 @@ namespace BrodieTheatre
             formMain.BeginInvoke(new Action(() =>
             {
                 formMain.trackBarPots.Value = insteonGetLightLevel(Properties.Settings.Default.potsAddress);
-            }));
-            await doDelay(1200);
-            formMain.BeginInvoke(new Action(() =>
-            {
-                int fanState = insteonGetSwitchStatus(Properties.Settings.Default.fanAddress);
-                if (fanState == 0)
-                {
-                    updateFanStatus(false);
-                }
-                else if (fanState > 0)
-                {
-                    updateFanStatus(true);
-                }
             }));
         }
 

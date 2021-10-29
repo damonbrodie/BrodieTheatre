@@ -325,7 +325,7 @@ namespace BrodieTheatre.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("MyAuthTokenSharedWith_IFTTT_Applet")]
         public string webServerAuthToken {
             get {
                 return ((string)(this["webServerAuthToken"]));

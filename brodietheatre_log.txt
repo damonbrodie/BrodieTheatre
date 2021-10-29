@@ -1,0 +1,12 @@
+2021-10-29 11:38:18 ------ Brodie Theatre Starting Up ------
+2021-10-29 11:38:19 Harmony:  Connecting to Hub
+2021-10-29 11:38:21 Harmony:  Connected to Hub, current activity ID is '-1'
+2021-10-29 11:38:28 ------ Brodie Theatre Shutting Down ------
+2021-10-29 11:39:01 ------ Brodie Theatre Starting Up ------
+2021-10-29 11:39:01 Harmony:  Connecting to Hub
+2021-10-29 11:39:03 Harmony:  Connected to Hub, current activity ID is '-1'
+2021-10-29 11:39:18 ------ Brodie Theatre Shutting Down ------
+2021-10-29 11:39:35 ------ Brodie Theatre Starting Up ------
+2021-10-29 11:39:36 Harmony:  Connecting to Hub
+2021-10-29 11:39:40 Harmony:  Connected to Hub, current activity ID is '-1'
+2021-10-29 11:39:58 ------ Brodie Theatre Shutting Down ------

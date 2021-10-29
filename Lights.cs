@@ -65,7 +65,6 @@ namespace BrodieTheatre
             trackBarPots.Value = Properties.Settings.Default.potsStoppedLevel;
             queueLightLevel(Properties.Settings.Default.trayAddress, Properties.Settings.Default.trayStoppedLevel);
             trackBarTray.Value = Properties.Settings.Default.trayStoppedLevel;
-            ResetGlobalTimer();
         }
 
         private void lightsOn()
@@ -76,7 +75,6 @@ namespace BrodieTheatre
             trackBarPots.Value = trackBarPots.Maximum;
             queueLightLevel(Properties.Settings.Default.trayAddress, 100);
             trackBarTray.Value = trackBarTray.Maximum;
-            ResetGlobalTimer();
         }
 
         private void lightsToEnteringLevel()
@@ -87,7 +85,6 @@ namespace BrodieTheatre
             trackBarPots.Value = Properties.Settings.Default.potsEnteringLevel;
             queueLightLevel(Properties.Settings.Default.trayAddress, Properties.Settings.Default.trayEnteringLevel);
             trackBarTray.Value = Properties.Settings.Default.trayEnteringLevel;
-            ResetGlobalTimer();
         }
 
         private void lightsOff()
@@ -98,7 +95,6 @@ namespace BrodieTheatre
             trackBarPots.Value = trackBarPots.Minimum;
             queueLightLevel(Properties.Settings.Default.trayAddress, 0);
             trackBarTray.Value = trackBarTray.Minimum;
-            ResetGlobalTimer();
         }
 
         private void lightsToPlaybackLevel()
@@ -109,7 +105,6 @@ namespace BrodieTheatre
             trackBarPots.Value = Properties.Settings.Default.potsPlaybackLevel;
             queueLightLevel(Properties.Settings.Default.trayAddress, Properties.Settings.Default.trayPlaybackLevel);
             trackBarTray.Value = Properties.Settings.Default.trayPlaybackLevel;
-            ResetGlobalTimer();
         }
 
         private void lightsToPausedLevel()
@@ -120,7 +115,6 @@ namespace BrodieTheatre
             trackBarPots.Value = Properties.Settings.Default.potsPausedLevel;
             queueLightLevel(Properties.Settings.Default.trayAddress, Properties.Settings.Default.trayPausedLevel);
             trackBarTray.Value = Properties.Settings.Default.trayPausedLevel;
-            ResetGlobalTimer();
         }
 
         private void timerSetLights_Tick(object sender, EventArgs e)

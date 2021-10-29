@@ -78,7 +78,7 @@
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="webServerAuthToken" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">MyAuthTokenSharedWith_IFTTT_Applet</Value>
     </Setting>
     <Setting Name="potsPlaybackLevel" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>
