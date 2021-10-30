@@ -78,7 +78,7 @@
             this.timerPotTrack = new System.Windows.Forms.Timer(this.components);
             this.timerCheckPLM = new System.Windows.Forms.Timer(this.components);
             this.statusStrip = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatus = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.timerClearStatus = new System.Windows.Forms.Timer(this.components);
             this.timerStartLights = new System.Windows.Forms.Timer(this.components);
             this.timerSensorStatus = new System.Windows.Forms.Timer(this.components);
@@ -96,6 +96,7 @@
             this.timerInsteonMotionLatch = new System.Windows.Forms.Timer(this.components);
             this.timerInsteonPoll = new System.Windows.Forms.Timer(this.components);
             this.timerHarmonyPoll = new System.Windows.Forms.Timer(this.components);
+            this.toolStripStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -120,7 +121,7 @@
             this.fileToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(1012, 33);
+            this.menuStrip.Size = new System.Drawing.Size(1012, 36);
             this.menuStrip.TabIndex = 0;
             this.menuStrip.Text = "menuStrip";
             // 
@@ -615,7 +616,8 @@
             // 
             this.statusStrip.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatus});
+            this.toolStripStatus,
+            this.toolStripStatusLabel1});
             this.statusStrip.Location = new System.Drawing.Point(0, 664);
             this.statusStrip.Name = "statusStrip";
             this.statusStrip.Padding = new System.Windows.Forms.Padding(2, 0, 21, 0);
@@ -624,14 +626,10 @@
             this.statusStrip.TabIndex = 11;
             this.statusStrip.Text = "statusStrip1";
             // 
-            // toolStripStatus
+            // toolStripStatusLabel1
             // 
-            this.toolStripStatus.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
-            this.toolStripStatus.BorderStyle = System.Windows.Forms.Border3DStyle.Etched;
-            this.toolStripStatus.Name = "toolStripStatus";
-            this.toolStripStatus.Size = new System.Drawing.Size(21, 29);
-            this.toolStripStatus.Text = " ";
-            this.toolStripStatus.TextChanged += new System.EventHandler(this.ToolStripStatus_TextChanged);
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(0, 29);
             // 
             // timerClearStatus
             // 
@@ -741,6 +739,15 @@
             this.timerHarmonyPoll.Interval = 30000;
             this.timerHarmonyPoll.Tick += new System.EventHandler(this.TimerHarmonyPoll_Tick);
             // 
+            // toolStripStatus
+            // 
+            this.toolStripStatus.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
+            this.toolStripStatus.BorderStyle = System.Windows.Forms.Border3DStyle.Etched;
+            this.toolStripStatus.Name = "toolStripStatus";
+            this.toolStripStatus.Size = new System.Drawing.Size(21, 29);
+            this.toolStripStatus.Text = " ";
+            this.toolStripStatus.TextChanged += new System.EventHandler(this.ToolStripStatus_TextChanged);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -825,7 +832,6 @@
         private System.Windows.Forms.Timer timerPotTrack;
         private System.Windows.Forms.Timer timerCheckPLM;
         private System.Windows.Forms.StatusStrip statusStrip;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatus;
         private System.Windows.Forms.Timer timerClearStatus;
         private System.Windows.Forms.Timer timerStartLights;
         private System.Windows.Forms.Timer timerSensorStatus;
@@ -857,5 +863,7 @@
         private System.Windows.Forms.Timer timerHarmonyPoll;
         private System.Windows.Forms.Button buttonFanPower;
         private System.Windows.Forms.Label labelFanStatus;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatus;
     }
 }

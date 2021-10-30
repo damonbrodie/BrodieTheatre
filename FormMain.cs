@@ -1,6 +1,4 @@
 ﻿using System;
-using System.IO;
-using System.Collections.Generic;
 using System.Windows.Forms;
 
 
@@ -28,7 +26,6 @@ namespace BrodieTheatre
         static FormMain formMain;
 
         private int statusTickCounter = 0;
-        public bool vacancyWarning;
 
         public bool debugInsteon;
         public bool debugHarmony;

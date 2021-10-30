@@ -348,12 +348,6 @@ namespace BrodieTheatre
                         Logging.writeLog("Insteon:  Latch timer expired - setting room vacant");
                         labelRoomOccupancy.Text = "Vacant";
                         labelMotionSensorStatus.Text = "No Motion";
-                        vacancyWarning = false;
-                    }
-                    else if (insteonMotionLatchExpires.AddMinutes(-1) < rightNow && !vacancyWarning)
-                    {
-                        Logging.writeLog("Insteon:  One minute warning to vacancy");
-                        vacancyWarning = true;
                     }
                     else
                     {
@@ -379,7 +373,6 @@ namespace BrodieTheatre
                 Logging.writeLog("Insteon:  Motion Sensor reported 'Motion Detected'");
                 labelMotionSensorStatus.Text = "Motion Detected";
             }
-            vacancyWarning = false;
             labelRoomOccupancy.Text = "Occupied";
             insteonMotionLatchActive = false;
         }
