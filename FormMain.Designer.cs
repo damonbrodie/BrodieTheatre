@@ -78,6 +78,7 @@
             this.timerPotTrack = new System.Windows.Forms.Timer(this.components);
             this.timerCheckPLM = new System.Windows.Forms.Timer(this.components);
             this.statusStrip = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.timerClearStatus = new System.Windows.Forms.Timer(this.components);
             this.timerStartLights = new System.Windows.Forms.Timer(this.components);
@@ -91,12 +92,10 @@
             this.timerProjectorControl = new System.Windows.Forms.Timer(this.components);
             this.timerSetLights = new System.Windows.Forms.Timer(this.components);
             this.timerKodiConnect = new System.Windows.Forms.Timer(this.components);
-            this.timerKodiStartPlayback = new System.Windows.Forms.Timer(this.components);
             this.timerKodiPoll = new System.Windows.Forms.Timer(this.components);
             this.timerInsteonMotionLatch = new System.Windows.Forms.Timer(this.components);
             this.timerInsteonPoll = new System.Windows.Forms.Timer(this.components);
             this.timerHarmonyPoll = new System.Windows.Forms.Timer(this.components);
-            this.toolStripStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -121,7 +120,7 @@
             this.fileToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(1012, 36);
+            this.menuStrip.Size = new System.Drawing.Size(1012, 33);
             this.menuStrip.TabIndex = 0;
             this.menuStrip.Text = "menuStrip";
             // 
@@ -626,6 +625,15 @@
             this.statusStrip.TabIndex = 11;
             this.statusStrip.Text = "statusStrip1";
             // 
+            // toolStripStatus
+            // 
+            this.toolStripStatus.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
+            this.toolStripStatus.BorderStyle = System.Windows.Forms.Border3DStyle.Etched;
+            this.toolStripStatus.Name = "toolStripStatus";
+            this.toolStripStatus.Size = new System.Drawing.Size(21, 29);
+            this.toolStripStatus.Text = " ";
+            this.toolStripStatus.TextChanged += new System.EventHandler(this.ToolStripStatus_TextChanged);
+            // 
             // toolStripStatusLabel1
             // 
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
@@ -739,15 +747,6 @@
             this.timerHarmonyPoll.Interval = 30000;
             this.timerHarmonyPoll.Tick += new System.EventHandler(this.TimerHarmonyPoll_Tick);
             // 
-            // toolStripStatus
-            // 
-            this.toolStripStatus.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
-            this.toolStripStatus.BorderStyle = System.Windows.Forms.Border3DStyle.Etched;
-            this.toolStripStatus.Name = "toolStripStatus";
-            this.toolStripStatus.Size = new System.Drawing.Size(21, 29);
-            this.toolStripStatus.Text = " ";
-            this.toolStripStatus.TextChanged += new System.EventHandler(this.ToolStripStatus_TextChanged);
-            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -855,7 +854,6 @@
         private System.Windows.Forms.Label labelKodiStatus;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Timer timerKodiConnect;
-        private System.Windows.Forms.Timer timerKodiStartPlayback;
         private System.Windows.Forms.Timer timerKodiPoll;
         private System.Windows.Forms.Timer timerInsteonMotionLatch;
         private System.Windows.Forms.ProgressBar progressBarInsteonMotionLatch;
