@@ -27,7 +27,7 @@ namespace BrodieTheatre
 
         private int statusTickCounter = 0;
 
-        public bool debugInsteon = true;
+        public bool debugInsteon = false;
         public bool debugHarmony = false;
 
         public FormMain()
