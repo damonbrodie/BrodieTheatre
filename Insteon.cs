@@ -56,18 +56,36 @@ namespace BrodieTheatre
 
         public int insteonProcessMotionSensorMessage(string message, string address)
         {
-            //writeLog("Insteon:  Process motion sensor from address '" + address + "' message '" + message + "'");
+            if (debugInsteon)
+            {
+                formMain.BeginInvoke(new Action(() =>
+                {
+                    Logging.writeLog("Insteon:  Process motion sensor from address '" + address + "' message '" + message + "'");
+                }));
+            }
             int state = -1;
             if (message == string.Empty)
             {
+                formMain.BeginInvoke(new Action(() =>
+                {
+                    Logging.writeLog("Process Motion - empty message");
+                }));
                 return state;
             }
             switch (message)
             {
-                case "Turn On":
+                case string sub when sub.StartsWith("Turn On"):
+                    formMain.BeginInvoke(new Action(() =>
+                    {
+                        Logging.writeLog("Process Motion - turn on");
+                    }));
                     state = 1;
                     break;
-                case "Turn Off":
+                case string sub when sub.StartsWith ("Turn Off"):
+                    formMain.BeginInvoke(new Action(() =>
+                    {
+                        Logging.writeLog("Process Motion - turn off");
+                    }));
                     state = 0;
                     break;
             }
@@ -163,6 +181,10 @@ namespace BrodieTheatre
             }
             else if (address == Properties.Settings.Default.doorSensorAddress)
             {
+                formMain.BeginInvoke(new Action(() =>
+                {
+                    Logging.writeLog("Insteon:  In process door");
+                }));
                 int state = insteonProcessMotionSensorMessage(desc, address);
 
                 if (state == -1)
