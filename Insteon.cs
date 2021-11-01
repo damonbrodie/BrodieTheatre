@@ -197,7 +197,7 @@ namespace BrodieTheatre
                     {
                         
                         formMain.toolStripStatus.Text = "Door Opened";
-                        if (formMain.trackBarPots.Value == 0 && formMain.trackBarTray.Value == 0)
+                        if (areLightsOff())
                         {
                             Logging.writeLog("Insteon:  Door Opened - Turning On Lights");
                             formMain.insteonDoMotion(true);

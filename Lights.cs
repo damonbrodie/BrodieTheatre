@@ -57,6 +57,15 @@ namespace BrodieTheatre
             lightsToStoppedLevel();
         }
 
+        private bool areLightsOff()
+        {
+            if (formMain.trackBarPots.Value == 0 && formMain.trackBarTray.Value == 0)
+            {
+                return true;
+            }
+            return false;
+        }
+
         private void lightsToStoppedLevel()
         {
             Logging.writeLog("Lighting:  Setting lights to Stopped Level");
