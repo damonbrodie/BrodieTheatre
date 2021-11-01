@@ -195,8 +195,18 @@ namespace BrodieTheatre
                 { //Door Open Detected
                     formMain.BeginInvoke(new Action(() =>
                     {
-                        Logging.writeLog("Insteon:  Door Opened");
+                        
                         formMain.toolStripStatus.Text = "Door Opened";
+                        if (formMain.trackBarPots.Value == 0 && formMain.trackBarTray.Value == 0)
+                        {
+                            Logging.writeLog("Insteon:  Door Opened - Turning On Lights");
+                            formMain.insteonDoMotion(true);
+                            lightsOn();
+                        }
+                        else
+                        {
+                            Logging.writeLog("Insteon:  Door Opened - Lights are already on - no change");
+                        }
                     }));
                 }
                 else if (state == 0)
@@ -207,20 +217,14 @@ namespace BrodieTheatre
                         formMain.toolStripStatus.Text = "Door Closed";
                     }));
                 }
-                // No matter if the door is opened or closed, we turn on the lights if the room is idle.
-
-                if (!HarmonyIsActivityStarted() && labelKodiPlaybackStatus.Text == "Stopped" && labelRoomOccupancy.Text != "Occupied")
-                {
-                    formMain.BeginInvoke(new Action(() =>
-                    {
-                        formMain.insteonDoMotion(true);
-                    }));
-                }
             }
            
             else
             {
-                Logging.writeLog("Insteon:  Received unknown device message from address '" + address + "' message '" + desc + "'");
+                formMain.BeginInvoke(new Action(() =>
+                {
+                    Logging.writeLog("Insteon:  Received unknown device message from address '" + address + "' message '" + desc + "'");
+                }));
             }
         }
 

@@ -44,7 +44,6 @@ namespace BrodieTheatre
             {
                 this.WindowState = FormWindowState.Normal;
             }
-
         }
 
         private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -165,8 +164,6 @@ namespace BrodieTheatre
             UnhookWindowsHookEx(hookID);
             Logging.writeLog("------ Brodie Theatre Shutting Down ------");
         }
-
-        
 
         private void ListBoxActivities_MouseDoubleClick(object sender, MouseEventArgs e)
         {
