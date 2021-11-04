@@ -172,7 +172,10 @@ namespace BrodieTheatre
             Dictionary<string, dynamic> result = null;
             if (debugKodi)
             {
-                Logging.writeLog("Kodi:  Raw JSON:  " + jsonText);
+                formMain.BeginInvoke(new Action(() =>
+                {
+                    Logging.writeLog("Kodi:  Raw JSON:  " + jsonText);
+                }));
             }
             try
             {
@@ -180,7 +183,10 @@ namespace BrodieTheatre
             }
             catch
             {
-                Logging.writeLog("Kodi:  Unable to decode JSON:  " + jsonText);
+                formMain.BeginInvoke(new Action(() =>
+                {
+                    Logging.writeLog("Kodi:  Unable to decode JSON:  " + jsonText);
+                }));
                 return;
             }
             if (result.ContainsKey("id") && result["id"] == "98")
@@ -197,18 +203,27 @@ namespace BrodieTheatre
                 {
                     if (result["result"]["currentvideostream"]["codec"] == string.Empty && labelKodiPlaybackStatus.Text != "Stopped")
                     {
-                        labelKodiPlaybackStatus.Text = "Stopped";
-                        Logging.writeLog("Kodi:  Playback status incorrect - No players active");
+                        formMain.BeginInvoke(new Action(() =>
+                        {
+                            labelKodiPlaybackStatus.Text = "Stopped";
+                            Logging.writeLog("Kodi:  Playback status incorrect - No players active");
+                        }));
                     }
                     else if (result["result"]["currentvideostream"]["codec"] != string.Empty && result["result"]["speed"] != 0 && labelKodiPlaybackStatus.Text != "Playing")
                     {
-                        labelKodiPlaybackStatus.Text = "Playing";
-                        Logging.writeLog("Kodi:  Playback status incorrect - Player is running");
+                        formMain.BeginInvoke(new Action(() =>
+                        {
+                            labelKodiPlaybackStatus.Text = "Playing";
+                            Logging.writeLog("Kodi:  Playback status incorrect - Player is running");
+                        }));
                     }
                     else if (result["result"]["currentvideostream"]["codec"] != string.Empty && result["result"]["speed"] == 0 && labelKodiPlaybackStatus.Text != "Paused")
                     {
-                        labelKodiPlaybackStatus.Text = "Paused";
-                        Logging.writeLog("Kodi:  Playback status incorrect - Player is paused");
+                        formMain.BeginInvoke(new Action(() =>
+                        {
+                            labelKodiPlaybackStatus.Text = "Paused";
+                            Logging.writeLog("Kodi:  Playback status incorrect - Player is paused");
+                        }));
                     }
                 }
                 catch
@@ -221,27 +236,39 @@ namespace BrodieTheatre
                 switch (result["method"])
                 {
                     case "Player.OnPause":
-                        Logging.writeLog("Kodi:  Kodi status changed to 'Paused'");
-                        insteonDoMotion(false);
-                        labelKodiPlaybackStatus.Text = "Paused";
-                        lightsToPausedLevel();
+                        formMain.BeginInvoke(new Action(() =>
+                        {
+                            Logging.writeLog("Kodi:  Kodi status changed to 'Paused'");
+                            insteonDoMotion(false);
+                            labelKodiPlaybackStatus.Text = "Paused";
+                            lightsToPausedLevel();
+                        }));
                         break;
                     case "Player.OnPlay":
                     case "Player.OnResume":
-                        Logging.writeLog("Kodi:  Kodi status changed to 'Playing'");
-                        insteonDoMotion(false);
-                        labelKodiPlaybackStatus.Text = "Playing";
-                        lightsToPlaybackLevel();
+                        formMain.BeginInvoke(new Action(() =>
+                        {
+                            Logging.writeLog("Kodi:  Kodi status changed to 'Playing'");
+                            insteonDoMotion(false);
+                            labelKodiPlaybackStatus.Text = "Playing";
+                            lightsToPlaybackLevel();
+                        }));
                         break;
                     case "Player.OnStop":
-                        Logging.writeLog("Kodi:  Kodi status changed to 'Stopped'");
-                        insteonDoMotion(false);
-                        labelKodiPlaybackStatus.Text = "Stopped";
-                        lightsToStoppedLevel();
+                        formMain.BeginInvoke(new Action(() =>
+                        {
+                            Logging.writeLog("Kodi:  Kodi status changed to 'Stopped'");
+                            insteonDoMotion(false);
+                            labelKodiPlaybackStatus.Text = "Stopped";
+                            lightsToStoppedLevel();
+                        }));
                         break;
                     case "System.OnQuit":
-                        Logging.writeLog("Kodi:  Kodi is exiting");
-                        kodiStatusDisconnect();
+                        formMain.BeginInvoke(new Action(() =>
+                        {
+                            Logging.writeLog("Kodi:  Kodi is exiting");
+                            kodiStatusDisconnect();
+                        }));
                         break;
                     case "Other.aspectratio":
                         if (result["params"]["sender"] == "brodietheatre")
@@ -249,12 +276,18 @@ namespace BrodieTheatre
                             string kodiAspectRatio = result["params"]["data"];
                             try
                             {
-                                projectorQueueChangeAspect(float.Parse(kodiAspectRatio));
-                                Logging.writeLog("Kodi:  Received Aspect Ratio: '" + kodiAspectRatio + "'");
+                                formMain.BeginInvoke(new Action(() =>
+                                {
+                                    projectorQueueChangeAspect(float.Parse(kodiAspectRatio));
+                                    Logging.writeLog("Kodi:  Received Aspect Ratio: '" + kodiAspectRatio + "'");
+                                }));
                             }
                             catch (FormatException)
                             {
-                                Logging.writeLog("Kodi:  Invalid Aspect Ratio: '" + kodiAspectRatio + "'");
+                                formMain.BeginInvoke(new Action(() =>
+                                {
+                                    Logging.writeLog("Kodi:  Invalid Aspect Ratio: '" + kodiAspectRatio + "'");
+                                }));
                             }
                         }
                         break;
@@ -262,7 +295,10 @@ namespace BrodieTheatre
             }
             else
             {
-                Logging.writeLog("Kodi:  Received unknown JSON:  " + jsonText);
+                    formMain.BeginInvoke(new Action(() =>
+                    {
+                        Logging.writeLog("Kodi:  Received unknown JSON:  " + jsonText);
+                    }));
             }
         }
 
@@ -287,7 +323,10 @@ namespace BrodieTheatre
         {
             if (kodiIsConnected)
             {
-                Logging.writeLog("Kodi:  Connection closed to Kodi JSON port");
+                formMain.BeginInvoke(new Action(() =>
+                {
+                    Logging.writeLog("Kodi:  Connection closed to Kodi JSON port");
+                }));
             }
             kodiIsConnected = false;
             formMain.BeginInvoke(new Action(() =>
