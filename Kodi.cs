@@ -170,6 +170,10 @@ namespace BrodieTheatre
         public void kodiProcessJson(string jsonText)
         {      
             Dictionary<string, dynamic> result = null;
+            if (debugKodi)
+            {
+                Logging.writeLog("Kodi:  Raw JSON:  " + jsonText);
+            }
             try
             {
                 result = JsonConvert.DeserializeObject<Dictionary<string, dynamic>>(jsonText);
@@ -223,6 +227,7 @@ namespace BrodieTheatre
                         lightsToPausedLevel();
                         break;
                     case "Player.OnPlay":
+                    case "Player.OnResume":
                         Logging.writeLog("Kodi:  Kodi status changed to 'Playing'");
                         insteonDoMotion(false);
                         labelKodiPlaybackStatus.Text = "Playing";
