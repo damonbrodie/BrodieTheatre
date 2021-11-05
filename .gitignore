@@ -338,3 +338,9 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+/agsXMPP.dll
+/BrodieTheatre.application
+/Newtonsoft.Json.dll
+/SoapBox.FluentDwelling.dll
+/BrodieTheatre.exe.manifest
+/app.publish
