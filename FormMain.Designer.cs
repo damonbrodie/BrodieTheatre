@@ -85,6 +85,8 @@
             this.timerSensorStatus = new System.Windows.Forms.Timer(this.components);
             this.serialPortProjector = new System.IO.Ports.SerialPort(this.components);
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.progressBarShutdown = new System.Windows.Forms.ProgressBar();
+            this.label14 = new System.Windows.Forms.Label();
             this.labelRoomOccupancy = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
@@ -96,6 +98,7 @@
             this.timerInsteonMotionLatch = new System.Windows.Forms.Timer(this.components);
             this.timerInsteonPoll = new System.Windows.Forms.Timer(this.components);
             this.timerHarmonyPoll = new System.Windows.Forms.Timer(this.components);
+            this.timerShutdown = new System.Windows.Forms.Timer(this.components);
             this.menuStrip.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -120,7 +123,7 @@
             this.fileToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(1012, 36);
+            this.menuStrip.Size = new System.Drawing.Size(1012, 33);
             this.menuStrip.TabIndex = 0;
             this.menuStrip.Text = "menuStrip";
             // 
@@ -130,7 +133,7 @@
             this.settingsToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(54, 32);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(54, 29);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // settingsToolStripMenuItem
@@ -209,6 +212,7 @@
             this.labelCurrentActivity.Size = new System.Drawing.Size(179, 28);
             this.labelCurrentActivity.TabIndex = 7;
             this.labelCurrentActivity.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelCurrentActivity.TextChanged += new System.EventHandler(this.labelCurrentActivity_TextChanged);
             // 
             // label3
             // 
@@ -270,7 +274,7 @@
             this.progressBarInsteonMotionLatch.Location = new System.Drawing.Point(340, 286);
             this.progressBarInsteonMotionLatch.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.progressBarInsteonMotionLatch.Name = "progressBarInsteonMotionLatch";
-            this.progressBarInsteonMotionLatch.Size = new System.Drawing.Size(114, 28);
+            this.progressBarInsteonMotionLatch.Size = new System.Drawing.Size(214, 28);
             this.progressBarInsteonMotionLatch.TabIndex = 18;
             // 
             // labelPots
@@ -454,6 +458,7 @@
             this.labelKodiPlaybackStatus.TabIndex = 12;
             this.labelKodiPlaybackStatus.Text = "Stopped";
             this.labelKodiPlaybackStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelKodiPlaybackStatus.TextChanged += new System.EventHandler(this.labelKodiPlaybackStatus_TextChanged);
             // 
             // label6
             // 
@@ -657,6 +662,8 @@
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.progressBarShutdown);
+            this.groupBox5.Controls.Add(this.label14);
             this.groupBox5.Controls.Add(this.labelRoomOccupancy);
             this.groupBox5.Controls.Add(this.label10);
             this.groupBox5.Controls.Add(this.pictureBox5);
@@ -668,10 +675,28 @@
             this.groupBox5.TabIndex = 17;
             this.groupBox5.TabStop = false;
             // 
+            // progressBarShutdown
+            // 
+            this.progressBarShutdown.Location = new System.Drawing.Point(154, 92);
+            this.progressBarShutdown.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.progressBarShutdown.Name = "progressBarShutdown";
+            this.progressBarShutdown.Size = new System.Drawing.Size(179, 28);
+            this.progressBarShutdown.TabIndex = 23;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(59, 100);
+            this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(81, 20);
+            this.label14.TabIndex = 21;
+            this.label14.Text = "Shutdown";
+            // 
             // labelRoomOccupancy
             // 
             this.labelRoomOccupancy.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.labelRoomOccupancy.Location = new System.Drawing.Point(154, 65);
+            this.labelRoomOccupancy.Location = new System.Drawing.Point(154, 53);
             this.labelRoomOccupancy.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelRoomOccupancy.Name = "labelRoomOccupancy";
             this.labelRoomOccupancy.Size = new System.Drawing.Size(179, 28);
@@ -684,7 +709,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(52, 69);
+            this.label10.Location = new System.Drawing.Point(52, 57);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(88, 20);
@@ -746,6 +771,11 @@
             this.timerHarmonyPoll.Enabled = true;
             this.timerHarmonyPoll.Interval = 30000;
             this.timerHarmonyPoll.Tick += new System.EventHandler(this.TimerHarmonyPoll_Tick);
+            // 
+            // timerShutdown
+            // 
+            this.timerShutdown.Interval = 1000;
+            this.timerShutdown.Tick += new System.EventHandler(this.timerShutdown_Tick);
             // 
             // FormMain
             // 
@@ -863,5 +893,8 @@
         private System.Windows.Forms.Label labelFanStatus;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatus;
+        private System.Windows.Forms.Timer timerShutdown;
+        private System.Windows.Forms.ProgressBar progressBarShutdown;
+        private System.Windows.Forms.Label label14;
     }
 }

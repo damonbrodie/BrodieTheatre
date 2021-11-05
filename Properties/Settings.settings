@@ -8,12 +8,6 @@
     <Setting Name="harmonyHubIP" Type="System.String" Scope="User">
       <Value Profile="(Default)">10.0.0.142</Value>
     </Setting>
-    <Setting Name="textToSpeechLanguage" Type="System.String" Scope="User">
-      <Value Profile="(Default)">en-US</Value>
-    </Setting>
-    <Setting Name="SmartSpeaker" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
     <Setting Name="potsPausedLevel" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
@@ -41,9 +35,6 @@
     <Setting Name="potsEnteringLevel" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
-    <Setting Name="globalShutdown" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">0</Value>
-    </Setting>
     <Setting Name="projectorPort" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
@@ -65,26 +56,14 @@
     <Setting Name="lightingDelayProjectorOn" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
-    <Setting Name="fanAddress" Type="System.String" Scope="User">
-      <Value Profile="(Default)">47.01.AC</Value>
-    </Setting>
-    <Setting Name="fanDelayOff" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">0</Value>
-    </Setting>
-    <Setting Name="webServerPort" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">8001</Value>
-    </Setting>
-    <Setting Name="googleCloudCredentialsJSON" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
-    <Setting Name="webServerAuthToken" Type="System.String" Scope="User">
-      <Value Profile="(Default)">MyAuthTokenSharedWith_IFTTT_Applet</Value>
-    </Setting>
     <Setting Name="potsPlaybackLevel" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="trayPlaybackLevel" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="shutdownLatch" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">10</Value>
     </Setting>
   </Settings>
 </SettingsFile>

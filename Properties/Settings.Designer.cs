@@ -49,30 +49,6 @@ namespace BrodieTheatre.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("en-US")]
-        public string textToSpeechLanguage {
-            get {
-                return ((string)(this["textToSpeechLanguage"]));
-            }
-            set {
-                this["textToSpeechLanguage"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string SmartSpeaker {
-            get {
-                return ((string)(this["SmartSpeaker"]));
-            }
-            set {
-                this["SmartSpeaker"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
         public int potsPausedLevel {
             get {
@@ -181,18 +157,6 @@ namespace BrodieTheatre.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int globalShutdown {
-            get {
-                return ((int)(this["globalShutdown"]));
-            }
-            set {
-                this["globalShutdown"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string projectorPort {
             get {
@@ -277,66 +241,6 @@ namespace BrodieTheatre.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("47.01.AC")]
-        public string fanAddress {
-            get {
-                return ((string)(this["fanAddress"]));
-            }
-            set {
-                this["fanAddress"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int fanDelayOff {
-            get {
-                return ((int)(this["fanDelayOff"]));
-            }
-            set {
-                this["fanDelayOff"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("8001")]
-        public int webServerPort {
-            get {
-                return ((int)(this["webServerPort"]));
-            }
-            set {
-                this["webServerPort"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string googleCloudCredentialsJSON {
-            get {
-                return ((string)(this["googleCloudCredentialsJSON"]));
-            }
-            set {
-                this["googleCloudCredentialsJSON"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("MyAuthTokenSharedWith_IFTTT_Applet")]
-        public string webServerAuthToken {
-            get {
-                return ((string)(this["webServerAuthToken"]));
-            }
-            set {
-                this["webServerAuthToken"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
         public int potsPlaybackLevel {
             get {
@@ -356,6 +260,18 @@ namespace BrodieTheatre.Properties {
             }
             set {
                 this["trayPlaybackLevel"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("10")]
+        public int shutdownLatch {
+            get {
+                return ((int)(this["shutdownLatch"]));
+            }
+            set {
+                this["shutdownLatch"] = value;
             }
         }
     }

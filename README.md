@@ -32,3 +32,4 @@ sent over this interface so that the projector Zoom level is set appropriately.
 changes can be initiated by the remote control.  The app captures these  and actions them.
 - When the user powers off the system via the remote control (shuts down the Harmony Activity), the app will 
 power down the AV equipment and the lighting is brought up to full.
+- Automatically shutdown the Amp and Projector if Kodi is Stopped for the set time period

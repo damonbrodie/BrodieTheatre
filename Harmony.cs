@@ -84,6 +84,7 @@ namespace BrodieTheatre
                 {
                     formMain.projectorPowerOff();
                     formMain.lightsToEnteringLevel();
+                    formMain.stopShutdownTimer();
                 }));
             }
             else
@@ -97,6 +98,7 @@ namespace BrodieTheatre
                     }
                     formMain.projectorPowerOn();
                     formMain.setDelayedLightTimer();
+                    formMain.startShutdownTimer();
                 }));
             }
         }
@@ -298,7 +300,7 @@ namespace BrodieTheatre
                     return;
                 }
             }
-            Logging.writeLog("Harmony:  Unknown Activity - cound not start by Name");
+            Logging.writeLog("Harmony:  Unknown Activity - cound not start by name");
         }
 
         private async void TimerHarmonyPoll_Tick(object sender, EventArgs e)

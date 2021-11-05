@@ -48,6 +48,7 @@ namespace BrodieTheatre
             Properties.Settings.Default.kodiIP                      = textBoxKodiIP.Text;
             Properties.Settings.Default.insteonMotionLatch          = trackBarInsteonMotionMinimumTime.Value;
             Properties.Settings.Default.lightingDelayProjectorOn    = trackBarDelayLightingProjectorStart.Value;
+            Properties.Settings.Default.shutdownLatch               = trackBarShutdown.Value;
 
             Properties.Settings.Default.Save();
             this.Close();
@@ -63,7 +64,19 @@ namespace BrodieTheatre
             textBoxTrayAddress.Text         = Properties.Settings.Default.trayAddress;
             textBoxMotionSensorAddress.Text = Properties.Settings.Default.motionSensorAddress;
             textBoxDoorSensorAddress.Text   = Properties.Settings.Default.doorSensorAddress;
-   
+
+            try
+            {
+                trackBarShutdown.Value = Properties.Settings.Default.shutdownLatch;
+            }
+            catch (Exception ex)
+            {
+                if (ex is ArgumentOutOfRangeException)
+                {
+                    trackBarShutdown.Value = trackBarShutdown.Minimum;
+                }
+            }
+
             try
             {
                 trackBarDelayLightingProjectorStart.Value = Properties.Settings.Default.lightingDelayProjectorOn;
@@ -257,5 +270,9 @@ namespace BrodieTheatre
             }
         }
 
+        private void trackBarShutdown_ValueChanged(object sender, EventArgs e)
+        {
+            labelShutdownMinutes.Text = trackBarShutdown.Value.ToString();
+        }
     }
 }

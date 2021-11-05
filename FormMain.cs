@@ -219,5 +219,57 @@ namespace BrodieTheatre
                 Logging.writeLog("Occupancy:  Overriding Room to Occupied");
             }
         }
+
+        private void labelKodiPlaybackStatus_TextChanged(object sender, EventArgs e)
+        {
+            if (labelKodiPlaybackStatus.Text == "Stopped")
+            {
+                startShutdownTimer();
+            }
+            else
+            {
+                stopShutdownTimer();
+            }
+        }
+
+        private void stopShutdownTimer ()
+        {
+            timerShutdown.Enabled = false;
+            progressBarShutdown.Value = 0;
+            Logging.writeLog("Theatre:  Stop Shutdown Timer");
+        }
+
+        private void startShutdownTimer()
+        {
+            if (labelKodiPlaybackStatus.Text == "Stopped" && HarmonyIsActivityStarted())
+            {
+                timerShutdown.Enabled = true;
+                progressBarShutdown.Maximum = 60 * Properties.Settings.Default.shutdownLatch;
+                progressBarShutdown.Value = progressBarShutdown.Maximum;
+                Logging.writeLog("Theatre:  Starting Shutdown Timer - " + Properties.Settings.Default.shutdownLatch.ToString() + " minutes");
+            }
+        }
+
+        private void labelCurrentActivity_TextChanged(object sender, EventArgs e)
+        {
+            if (!HarmonyIsActivityStarted())
+            {
+                stopShutdownTimer();
+            }
+        }
+
+        private void timerShutdown_Tick(object sender, EventArgs e)
+        {
+            progressBarShutdown.Value--;
+            if (progressBarShutdown.Value <= 0)
+            {
+                Logging.writeLog("Theatre:  Idle Timer Expired - Powering Down");
+                stopShutdownTimer();
+                if (HarmonyIsActivityStarted())
+                {
+                    HarmonyStartActivityByName("PowerOff");
+                }
+            }
+        }
     }
 }
