@@ -157,15 +157,15 @@ namespace BrodieTheatre
             else if (address == Properties.Settings.Default.motionSensorAddress)
             {
                 int state = insteonProcessMotionSensorMessage(desc, address);
-                if (state == 1)
-                { //Motion Detected
+                if (state == 1) //Motion Detected
+                {
                     formMain.BeginInvoke(new Action(() =>
                     {
                         formMain.insteonDoMotion(true);
                     }));
                 }
-                else if (state == 0)
-                { //No Motion Detected
+                else if (state == 0)  //No Motion Detected
+                { 
                     formMain.BeginInvoke(new Action(() =>
                     {
                         if (formMain.labelMotionSensorStatus.Text != "No Motion")
@@ -181,18 +181,14 @@ namespace BrodieTheatre
             }
             else if (address == Properties.Settings.Default.doorSensorAddress)
             {
-                formMain.BeginInvoke(new Action(() =>
-                {
-                    Logging.writeLog("Insteon:  In process door");
-                }));
                 int state = insteonProcessMotionSensorMessage(desc, address);
 
                 if (state == -1)
                 {
                     return;
                 }
-                else if (state == 1)
-                { //Door Open Detected
+                else if (state == 1)  //Door Open Detected
+                { 
                     formMain.BeginInvoke(new Action(() =>
                     {
                         
@@ -209,8 +205,8 @@ namespace BrodieTheatre
                         }
                     }));
                 }
-                else if (state == 0)
-                { //Door Closed
+                else if (state == 0) //Door Closed
+                { 
                     formMain.BeginInvoke(new Action(() =>
                     {
                         Logging.writeLog("Insteon:  Door Closed");
@@ -244,7 +240,6 @@ namespace BrodieTheatre
                 float decLevel = (float)integerLevel / 254 * 10;
 
                 level = (int)decLevel;
-                //writeLog("Insteon:  Get light '" + address + "' at level '" + level.ToString() + "'");
             }
             return level;
         }
