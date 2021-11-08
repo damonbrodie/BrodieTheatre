@@ -113,11 +113,6 @@ namespace BrodieTheatre
 
             currentHarmonyIP = Properties.Settings.Default.harmonyHubIP;
             await HarmonyConnectAsync(true);
-            if (Program.Client != null)
-            {
-                Program.Client.OnActivityChanged += HarmonyClient_OnActivityChanged;
-            }
-            currentHarmonyIP = Properties.Settings.Default.harmonyHubIP;
 
             formMain.BeginInvoke(new Action(() =>
             {

@@ -23,7 +23,6 @@ namespace BrodieTheatre
 
         private async Task HarmonyConnectAsync(bool shouldUpdate = true)
         {
-            bool error = false;
             var currentActivityID = "";
             formMain.BeginInvoke(new Action(() =>
             {
@@ -54,17 +53,21 @@ namespace BrodieTheatre
                     }));
                 }
             }
-            catch (Exception ex)
+            catch
             {
                 formMain.BeginInvoke(new Action(() =>
                 {
-                Logging.writeLog("Harmony:  Cannot connect to Harmony Hub - " + ex);
+                Logging.writeLog("Harmony:  Cannot connect to Harmony Hub");
                 }));
-                error = true;
+                return;
             }
-            if (!error && shouldUpdate)
+            await doDelay(3000);
+            if (Program.Client != null)
             {
-                await doDelay(3000);
+                Program.Client.OnActivityChanged += HarmonyClient_OnActivityChanged;
+            }
+            if (shouldUpdate)
+            {
                 formMain.BeginInvoke(new Action(() =>
                 { 
                     formMain.HarmonyUpdateActivities(currentActivityID);
@@ -213,7 +216,7 @@ namespace BrodieTheatre
                 catch
                 {
                     HarmonyDispose();
-                    await HarmonyConnectAsync(false);
+                    await HarmonyConnectAsync(true);
                     counter += 1;
                 }
             }
@@ -268,7 +271,7 @@ namespace BrodieTheatre
                 catch
                 {
                     HarmonyDispose();
-                    await HarmonyConnectAsync(false);
+                    await HarmonyConnectAsync(true);
                     counter += 1;
                 }
             }
@@ -283,6 +286,7 @@ namespace BrodieTheatre
                 formMain.labelHarmonyStatus.Text = "Disconnected";
                 formMain.labelHarmonyStatus.ForeColor = System.Drawing.Color.Maroon;
             }));
+            Program.Client.OnActivityChanged -= HarmonyClient_OnActivityChanged;
             Program.Client.Dispose();
         }
 
