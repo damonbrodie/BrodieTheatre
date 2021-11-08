@@ -27,6 +27,8 @@ namespace BrodieTheatre
 
         private int statusTickCounter = 0;
 
+        public string lastHarmonyActivityID = "";
+
         public bool debugInsteon = false;
         public bool debugHarmony = false;
         public bool debugKodi = false;

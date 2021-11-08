@@ -36,6 +36,7 @@ namespace BrodieTheatre
                 Program.Client = await HarmonyClient.Create(Properties.Settings.Default.harmonyHubIP);
                 await doDelay(2000);
                 currentActivityID = await Program.Client.GetCurrentActivityAsync();
+                lastHarmonyActivityID = currentActivityID.ToString();
                 formMain.BeginInvoke(new Action(() =>
                 {
                     formMain.labelHarmonyStatus.Text = "Connected";
@@ -211,11 +212,7 @@ namespace BrodieTheatre
                 }
                 catch
                 {
-                    formMain.BeginInvoke(new Action(() =>
-                    {
-                        Logging.writeLog("Harmony:  Failed to send Harmony Command");
-                    }));
-                    Program.Client.Dispose();
+                    HarmonyDispose();
                     await HarmonyConnectAsync(false);
                     counter += 1;
                 }
@@ -270,18 +267,23 @@ namespace BrodieTheatre
                 }
                 catch
                 {
-                    formMain.BeginInvoke(new Action(() =>
-                    {
-                        formMain.toolStripStatus.Text = "Harmony Timeout - reconnecting";
-                        formMain.labelHarmonyStatus.Text = "Disconnected";
-                        formMain.labelHarmonyStatus.ForeColor = System.Drawing.Color.Maroon;
-                        Logging.writeLog("Harmony:  Error starting activity");
-                    }));
-                    Program.Client.Dispose();
+                    HarmonyDispose();
                     await HarmonyConnectAsync(false);
                     counter += 1;
                 }
             }
+        }
+
+        private void HarmonyDispose()
+        {
+            formMain.BeginInvoke(new Action(() =>
+            {
+                formMain.toolStripStatus.Text = "Closing stale Harmony Connection";
+                Logging.writeLog("Harmony:  Disposing of stale connection");
+                formMain.labelHarmonyStatus.Text = "Disconnected";
+                formMain.labelHarmonyStatus.ForeColor = System.Drawing.Color.Maroon;
+            }));
+            Program.Client.Dispose();
         }
 
         private void HarmonyStartActivityByName(string activityName, bool forceLights = true)
@@ -305,6 +307,7 @@ namespace BrodieTheatre
 
         private async void TimerHarmonyPoll_Tick(object sender, EventArgs e)
         {
+            // The first time the Timer lasts 30s.  Now poll every 60s
             timerHarmonyPoll.Interval = 60000;
             if (labelHarmonyStatus.Text == "Connected")
             {
@@ -313,14 +316,24 @@ namespace BrodieTheatre
                 try
                 {
                     currentActivityID = await Program.Client.GetCurrentActivityAsync();
+                    if (lastHarmonyActivityID != currentActivityID.ToString())
+                    {
+                        formMain.BeginInvoke(new Action(() =>
+                        {
+                            Logging.writeLog("Harmony:  Polling - Activity Changed - reconnect");
+                        }));
+                        HarmonyDispose();
+                        error = true;
+                    }
                 }
-                catch
+                catch (Exception ex)
                 {
-                    Logging.writeLog("Harmony:  Error Polling Hub");
                     formMain.BeginInvoke(new Action(() =>
                     {
-                        formMain.toolStripStatus.Text = "Error polling Harmony Hub";
+                        Logging.writeLog("Harmony:  Error Polling Hub");
+                        Logging.writeLog("Harmony:  " + ex.ToString());
                     }));
+                    HarmonyDispose();
                     error = true;
                 }
 
