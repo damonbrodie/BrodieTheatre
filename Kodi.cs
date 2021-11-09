@@ -270,17 +270,15 @@ namespace BrodieTheatre
                             kodiStatusDisconnect();
                         }));
                         break;
+                    // Example of Brodietheatre JSON {"jsonrpc":"2.0","method":"Other.aspectratio","params":{"data":"2.39","sender":"brodietheatre"}}
                     case "Other.aspectratio":
                         if (result["params"]["sender"] == "brodietheatre")
                         {
                             string kodiAspectRatio = result["params"]["data"];
+                            float ar = 0;
                             try
                             {
-                                formMain.BeginInvoke(new Action(() =>
-                                {
-                                    projectorQueueChangeAspect(float.Parse(kodiAspectRatio));
-                                    Logging.writeLog("Kodi:  Received Aspect Ratio: '" + kodiAspectRatio + "'");
-                                }));
+                                ar = float.Parse(kodiAspectRatio);
                             }
                             catch (FormatException)
                             {
@@ -289,6 +287,13 @@ namespace BrodieTheatre
                                     Logging.writeLog("Kodi:  Invalid Aspect Ratio: '" + kodiAspectRatio + "'");
                                 }));
                             }
+   
+                            formMain.BeginInvoke(new Action(() =>
+                            {
+                                projectorQueueChangeAspect(ar);
+                                Logging.writeLog("Kodi:  Received Aspect Ratio: '" + kodiAspectRatio + "'");
+                            }));
+
                         }
                         break;
                 }
