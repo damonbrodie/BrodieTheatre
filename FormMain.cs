@@ -17,10 +17,10 @@ namespace BrodieTheatre
            F11 - Lights Off
            F9  - Lights to Stopped level
            F7  - Lights to Playback level
-           F6  - Projector Lens Kodi Menu (Not captured by App)
            F5  - Projector Lens to Narrow aspect ratio
            F4  - Projector Lens to Wide aspect ratio
-           F3  - Kodi next audio language (Not captured by App)
+           F3  - Kodi next audio language (caught by Brodietheatre Kodi Addon)
+           F2  - Kodi save Aspect Ratio Override (caught by Brodietheatre Kodi Addon)
         */
 
         static FormMain formMain;
