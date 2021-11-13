@@ -92,6 +92,11 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.labelShutdownMinutes = new System.Windows.Forms.Label();
+            this.trackBarShutdown = new System.Windows.Forms.TrackBar();
+            this.label20 = new System.Windows.Forms.Label();
             this.labelPotsEntering = new System.Windows.Forms.Label();
             this.labelTrayEntering = new System.Windows.Forms.Label();
             this.trackBarPotsEntering = new System.Windows.Forms.TrackBar();
@@ -101,11 +106,8 @@
             this.label19 = new System.Windows.Forms.Label();
             this.buttonSave = new System.Windows.Forms.Button();
             this.openFileDialogGoogleCredentials = new System.Windows.Forms.OpenFileDialog();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.labelShutdownMinutes = new System.Windows.Forms.Label();
-            this.trackBarShutdown = new System.Windows.Forms.TrackBar();
-            this.label20 = new System.Windows.Forms.Label();
+            this.checkBoxStartWithWindows = new System.Windows.Forms.CheckBox();
+            this.label16 = new System.Windows.Forms.Label();
             this.tabControl.SuspendLayout();
             this.tabPage6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownKodiPort)).BeginInit();
@@ -123,9 +125,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.trackBarPotsPlayback)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarTrayPlayback)).BeginInit();
             this.tabPage4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarShutdown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarPotsEntering)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarTrayEntering)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarShutdown)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl
@@ -145,6 +147,8 @@
             // 
             // tabPage6
             // 
+            this.tabPage6.Controls.Add(this.checkBoxStartWithWindows);
+            this.tabPage6.Controls.Add(this.label16);
             this.tabPage6.Controls.Add(this.textBoxKodiIP);
             this.tabPage6.Controls.Add(this.label32);
             this.tabPage6.Controls.Add(this.numericUpDownKodiPort);
@@ -161,7 +165,7 @@
             // 
             // textBoxKodiIP
             // 
-            this.textBoxKodiIP.Location = new System.Drawing.Point(160, 71);
+            this.textBoxKodiIP.Location = new System.Drawing.Point(187, 118);
             this.textBoxKodiIP.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBoxKodiIP.Name = "textBoxKodiIP";
             this.textBoxKodiIP.Size = new System.Drawing.Size(184, 26);
@@ -170,7 +174,7 @@
             // label32
             // 
             this.label32.AutoSize = true;
-            this.label32.Location = new System.Drawing.Point(86, 75);
+            this.label32.Location = new System.Drawing.Point(116, 124);
             this.label32.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label32.Name = "label32";
             this.label32.Size = new System.Drawing.Size(63, 20);
@@ -179,7 +183,7 @@
             // 
             // numericUpDownKodiPort
             // 
-            this.numericUpDownKodiPort.Location = new System.Drawing.Point(160, 126);
+            this.numericUpDownKodiPort.Location = new System.Drawing.Point(187, 168);
             this.numericUpDownKodiPort.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.numericUpDownKodiPort.Maximum = new decimal(new int[] {
             99999,
@@ -193,7 +197,7 @@
             // label31
             // 
             this.label31.AutoSize = true;
-            this.label31.Location = new System.Drawing.Point(26, 129);
+            this.label31.Location = new System.Drawing.Point(56, 168);
             this.label31.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label31.Name = "label31";
             this.label31.Size = new System.Drawing.Size(123, 20);
@@ -203,7 +207,7 @@
             // checkBoxStartMinimized
             // 
             this.checkBoxStartMinimized.AutoSize = true;
-            this.checkBoxStartMinimized.Location = new System.Drawing.Point(160, 25);
+            this.checkBoxStartMinimized.Location = new System.Drawing.Point(187, 24);
             this.checkBoxStartMinimized.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.checkBoxStartMinimized.Name = "checkBoxStartMinimized";
             this.checkBoxStartMinimized.Size = new System.Drawing.Size(22, 21);
@@ -213,7 +217,7 @@
             // label26
             // 
             this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(30, 25);
+            this.label26.Location = new System.Drawing.Point(57, 24);
             this.label26.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(122, 20);
@@ -833,6 +837,62 @@
             this.tabPage4.Text = "Occupancy";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(432, 280);
+            this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(65, 20);
+            this.label14.TabIndex = 32;
+            this.label14.Text = "minutes";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(26, 242);
+            this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(233, 20);
+            this.label15.TabIndex = 31;
+            this.label15.Text = "Automatic Shutdown Time:";
+            // 
+            // labelShutdownMinutes
+            // 
+            this.labelShutdownMinutes.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelShutdownMinutes.Location = new System.Drawing.Point(377, 274);
+            this.labelShutdownMinutes.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelShutdownMinutes.Name = "labelShutdownMinutes";
+            this.labelShutdownMinutes.Size = new System.Drawing.Size(52, 34);
+            this.labelShutdownMinutes.TabIndex = 30;
+            this.labelShutdownMinutes.Text = "10";
+            this.labelShutdownMinutes.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // trackBarShutdown
+            // 
+            this.trackBarShutdown.BackColor = System.Drawing.SystemColors.Window;
+            this.trackBarShutdown.LargeChange = 1;
+            this.trackBarShutdown.Location = new System.Drawing.Point(113, 268);
+            this.trackBarShutdown.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.trackBarShutdown.Maximum = 60;
+            this.trackBarShutdown.Minimum = 10;
+            this.trackBarShutdown.Name = "trackBarShutdown";
+            this.trackBarShutdown.Size = new System.Drawing.Size(266, 69);
+            this.trackBarShutdown.TabIndex = 28;
+            this.trackBarShutdown.Value = 10;
+            this.trackBarShutdown.ValueChanged += new System.EventHandler(this.trackBarShutdown_ValueChanged);
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(29, 274);
+            this.label20.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(64, 20);
+            this.label20.TabIndex = 29;
+            this.label20.Text = "Inactive";
+            // 
             // labelPotsEntering
             // 
             this.labelPotsEntering.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -926,61 +986,25 @@
             this.openFileDialogGoogleCredentials.Filter = "Credentials JSON |*.json";
             this.openFileDialogGoogleCredentials.RestoreDirectory = true;
             // 
-            // label14
+            // checkBoxStartWithWindows
             // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(432, 280);
-            this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(65, 20);
-            this.label14.TabIndex = 32;
-            this.label14.Text = "minutes";
+            this.checkBoxStartWithWindows.AutoSize = true;
+            this.checkBoxStartWithWindows.Location = new System.Drawing.Point(187, 71);
+            this.checkBoxStartWithWindows.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.checkBoxStartWithWindows.Name = "checkBoxStartWithWindows";
+            this.checkBoxStartWithWindows.Size = new System.Drawing.Size(22, 21);
+            this.checkBoxStartWithWindows.TabIndex = 50;
+            this.checkBoxStartWithWindows.UseVisualStyleBackColor = true;
             // 
-            // label15
+            // label16
             // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(26, 242);
-            this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(233, 20);
-            this.label15.TabIndex = 31;
-            this.label15.Text = "Automatic Shutdown Time:";
-            // 
-            // labelShutdownMinutes
-            // 
-            this.labelShutdownMinutes.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.labelShutdownMinutes.Location = new System.Drawing.Point(377, 274);
-            this.labelShutdownMinutes.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.labelShutdownMinutes.Name = "labelShutdownMinutes";
-            this.labelShutdownMinutes.Size = new System.Drawing.Size(52, 34);
-            this.labelShutdownMinutes.TabIndex = 30;
-            this.labelShutdownMinutes.Text = "10";
-            this.labelShutdownMinutes.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // trackBarShutdown
-            // 
-            this.trackBarShutdown.BackColor = System.Drawing.SystemColors.Window;
-            this.trackBarShutdown.LargeChange = 1;
-            this.trackBarShutdown.Location = new System.Drawing.Point(113, 268);
-            this.trackBarShutdown.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.trackBarShutdown.Maximum = 60;
-            this.trackBarShutdown.Minimum = 10;
-            this.trackBarShutdown.Name = "trackBarShutdown";
-            this.trackBarShutdown.Size = new System.Drawing.Size(266, 69);
-            this.trackBarShutdown.TabIndex = 28;
-            this.trackBarShutdown.Value = 10;
-            this.trackBarShutdown.ValueChanged += new System.EventHandler(this.trackBarShutdown_ValueChanged);
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(29, 274);
-            this.label20.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(64, 20);
-            this.label20.TabIndex = 29;
-            this.label20.Text = "Inactive";
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(27, 72);
+            this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(152, 20);
+            this.label16.TabIndex = 51;
+            this.label16.Text = "Start With Windows:";
             // 
             // FormSettings
             // 
@@ -1020,9 +1044,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.trackBarTrayPlayback)).EndInit();
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarShutdown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarPotsEntering)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarTrayEntering)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarShutdown)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1106,5 +1130,7 @@
         private System.Windows.Forms.Label labelShutdownMinutes;
         private System.Windows.Forms.TrackBar trackBarShutdown;
         private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.CheckBox checkBoxStartWithWindows;
+        private System.Windows.Forms.Label label16;
     }
 }

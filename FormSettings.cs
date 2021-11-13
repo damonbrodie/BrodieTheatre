@@ -3,13 +3,14 @@ using System.IO;
 using System.IO.Ports;
 using System.Windows.Forms;
 using System.Collections.Generic;
+using Microsoft.Win32;
 
 
 namespace BrodieTheatre
 {
     public partial class FormSettings : Form
     {
-
+        public RegistryKey rkApp = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
         public FormSettings()
         {
             InitializeComponent();
@@ -50,20 +51,39 @@ namespace BrodieTheatre
             Properties.Settings.Default.lightingDelayProjectorOn    = trackBarDelayLightingProjectorStart.Value;
             Properties.Settings.Default.shutdownLatch               = trackBarShutdown.Value;
 
+            if (checkBoxStartWithWindows.Checked)
+            {
+                rkApp.SetValue("BrodieTheatre", Application.ExecutablePath);
+            }
+            else
+            {
+                rkApp.DeleteValue("BrodieTheatre", false);
+            }
+
             Properties.Settings.Default.Save();
+
             this.Close();
         }
 
         private void FormSettings_Load(object sender, EventArgs e)
         {
-            checkBoxStartMinimized.Checked  = Properties.Settings.Default.startMinimized;
-            textBoxHarmonyHubIP.Text        = Properties.Settings.Default.harmonyHubIP;
-            numericUpDownKodiPort.Value     = (decimal)Properties.Settings.Default.kodiJSONPort;
-            textBoxKodiIP.Text              = Properties.Settings.Default.kodiIP;
-            textBoxPotsAddress.Text         = Properties.Settings.Default.potsAddress;
-            textBoxTrayAddress.Text         = Properties.Settings.Default.trayAddress;
-            textBoxMotionSensorAddress.Text = Properties.Settings.Default.motionSensorAddress;
-            textBoxDoorSensorAddress.Text   = Properties.Settings.Default.doorSensorAddress;
+            checkBoxStartMinimized.Checked   = Properties.Settings.Default.startMinimized;
+            textBoxHarmonyHubIP.Text         = Properties.Settings.Default.harmonyHubIP;
+            numericUpDownKodiPort.Value      = (decimal)Properties.Settings.Default.kodiJSONPort;
+            textBoxKodiIP.Text               = Properties.Settings.Default.kodiIP;
+            textBoxPotsAddress.Text          = Properties.Settings.Default.potsAddress;
+            textBoxTrayAddress.Text          = Properties.Settings.Default.trayAddress;
+            textBoxMotionSensorAddress.Text  = Properties.Settings.Default.motionSensorAddress;
+            textBoxDoorSensorAddress.Text    = Properties.Settings.Default.doorSensorAddress;
+
+            if (rkApp.GetValue("BrodieTheatre") == null)
+            {
+                checkBoxStartWithWindows.Checked = false;
+            }
+            else
+            {
+                checkBoxStartWithWindows.Checked = true;
+            }
 
             try
             {
