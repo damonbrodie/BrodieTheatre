@@ -109,7 +109,10 @@ namespace BrodieTheatre
                     {
                         formMain.BeginInvoke(new Action(() =>
                         {
-                            Logging.writeLog("Projector:  Received 'Power is on' from Projector");
+                            if (debugProjector)
+                           { 
+                                Logging.writeLog("Projector:  Received 'Power is on' from Projector");
+                            }
                             formMain.labelProjectorPower.Text = "On";
                             formMain.buttonProjectorPower.Text = "Power Off";
                             labelProjectorStatus.Text = "Connected";
@@ -122,7 +125,10 @@ namespace BrodieTheatre
                     {
                         formMain.BeginInvoke(new Action(() =>
                         {
-                            Logging.writeLog("Projector:  Received 'Power is off' from Projector");
+                            if (debugProjector)
+                            {
+                                Logging.writeLog("Projector:  Received 'Power is off' from Projector");
+                            }
                             formMain.labelProjectorPower.Text = "Off";
                             formMain.buttonProjectorPower.Text = "Power On";
                             labelProjectorStatus.Text = "Connected";
