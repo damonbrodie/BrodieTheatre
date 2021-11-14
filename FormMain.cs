@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
-
+using System.IO.Ports;
 
 namespace BrodieTheatre
 {
@@ -25,6 +25,8 @@ namespace BrodieTheatre
 
         static FormMain formMain;
 
+        static SerialPort serialPortProjector;
+
         private int statusTickCounter = 0;
 
         public string lastHarmonyActivityID = "";
@@ -32,12 +34,16 @@ namespace BrodieTheatre
         public bool debugInsteon = false;
         public bool debugHarmony = false;
         public bool debugKodi = false;
+        public bool debugProjector = false;
 
         public FormMain()
         {
             hookID = SetHook(proc);
             formMain = this;
             InitializeComponent();
+
+            serialPortProjector = new SerialPort();
+
             Logging.writeLog("------ Brodie Theatre Starting Up ------");
             if (Properties.Settings.Default.startMinimized)
             {
@@ -82,6 +88,11 @@ namespace BrodieTheatre
             if (Properties.Settings.Default.lightingDelayProjectorOn > 0)
             {
                 timerStartLights.Interval = Properties.Settings.Default.lightingDelayProjectorOn * 1000;
+            }
+
+            if (Properties.Settings.Default.projectorPort != currentProjectorPort)
+            {
+                projectorConnect();
             }
         }
 

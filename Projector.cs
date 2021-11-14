@@ -7,7 +7,10 @@ namespace BrodieTheatre
 {
     public partial class FormMain : Form
     {
+
         public string projectorLastCommand;
+
+        public string currentProjectorPort;
         public class ProjectorLensChange
         {
             public float newAspect = 0;
@@ -21,30 +24,52 @@ namespace BrodieTheatre
         {
             try
             {
+                // If the port is open close it
+                projectorDisconnect();
+
                 serialPortProjector.PortName = Properties.Settings.Default.projectorPort;
                 if (!serialPortProjector.IsOpen)
                 {
                     serialPortProjector.Open();
+                    formMain.BeginInvoke(new Action(() =>
+                    {
+                        Logging.writeLog("Projector:  Connecting Serial Port " + Properties.Settings.Default.projectorPort + " to Projector");
+                    }));
                 }
                 serialPortProjector.DataReceived += SerialPortProjector_DataReceived;
-                labelProjectorStatus.Text = "Connected";
-                labelProjectorStatus.ForeColor = System.Drawing.Color.ForestGreen;
+                projectorCheckPower();
             }
             catch
             {
+                formMain.BeginInvoke(new Action(() =>
+                {
+                    Logging.writeLog("Projector:  Unable to connect to Projector");
+                }));
                 toolStripStatus.Text = "Could not open projector serial port";
-                labelProjectorStatus.Text = "Disconnected";
-                labelProjectorStatus.ForeColor = System.Drawing.Color.Maroon;
+                projectorDisconnect();
             }
+        }
+
+        private void projectorDisconnect()
+        {
+            if (serialPortProjector.IsOpen)
+            {
+                serialPortProjector.DataReceived -= SerialPortProjector_DataReceived;
+                serialPortProjector.Close();
+                Logging.writeLog("Projector:  Closing connection to Projector");
+            }
+            labelProjectorStatus.Text = "Disconnected";
+            labelProjectorStatus.ForeColor = System.Drawing.Color.Maroon;
         }
 
         private void projectorCheckPower()
         {
-            if (labelProjectorStatus.Text == "Connected")
+            projectorLastCommand = "Power";
+            if (debugProjector)
             {
-                projectorLastCommand = "Power";
-                projectorSendCommand("", "QPW");
+                Logging.writeLog("Projector:  Sending Check Power query to projector");
             }
+            projectorSendCommand("", "QPW");
         }
 
         private void projectorSendCommand(string logMessage, string command)
@@ -58,7 +83,7 @@ namespace BrodieTheatre
             string full_command = start + command + end;
             if (serialPortProjector.IsOpen)
             {
-                if (logMessage != "")
+                if (logMessage != "" && debugProjector)
                 {
                     Logging.writeLog("Projector:  " + logMessage);
                 }
@@ -69,6 +94,13 @@ namespace BrodieTheatre
         private void SerialPortProjector_DataReceived(object sender, System.IO.Ports.SerialDataReceivedEventArgs e)
         {
             string response = serialPortProjector.ReadExisting();
+            if (debugProjector)
+            {
+                formMain.BeginInvoke(new Action(() =>
+                {
+                    Logging.writeLog("Projector:  Received from Projector - " + response);
+                }));
+            }
             switch (projectorLastCommand)
             {
                 case "Power":
@@ -77,8 +109,12 @@ namespace BrodieTheatre
                     {
                         formMain.BeginInvoke(new Action(() =>
                         {
+                            Logging.writeLog("Projector:  Received 'Power is on' from Projector");
                             formMain.labelProjectorPower.Text = "On";
                             formMain.buttonProjectorPower.Text = "Power Off";
+                            labelProjectorStatus.Text = "Connected";
+                            labelProjectorStatus.ForeColor = System.Drawing.Color.ForestGreen;
+                            currentProjectorPort = Properties.Settings.Default.projectorPort;
                         }));
                     }
                     //  Projector is in Power off State
@@ -86,8 +122,12 @@ namespace BrodieTheatre
                     {
                         formMain.BeginInvoke(new Action(() =>
                         {
+                            Logging.writeLog("Projector:  Received 'Power is off' from Projector");
                             formMain.labelProjectorPower.Text = "Off";
                             formMain.buttonProjectorPower.Text = "Power On";
+                            labelProjectorStatus.Text = "Connected";
+                            labelProjectorStatus.ForeColor = System.Drawing.Color.ForestGreen;
+                            currentProjectorPort = Properties.Settings.Default.projectorPort;
                         }));
                     }
                     break;
@@ -127,7 +167,10 @@ namespace BrodieTheatre
 
         private void timerCheckProjector_Tick(object sender, EventArgs e)
         {
-            projectorCheckPower();
+            if (labelProjectorStatus.Text == "Connected")
+            {
+                projectorCheckPower();
+            }
         }
 
         private void projectorChangeAspect(float aspect, bool force=false)
@@ -263,6 +306,19 @@ namespace BrodieTheatre
             else
             {
                 buttonProjectorChangeAspect.Text = "Narrow Aspect";
+            }
+        }
+        private void labelProjectorStatus_TextChanged(object sender, EventArgs e)
+        {
+            if (labelProjectorStatus.Text == "Disconnected")
+            {
+                buttonProjectorChangeAspect.Enabled = false;
+                buttonProjectorPower.Enabled = false;
+            }
+            else if (labelProjectorStatus.Text == "Connected")
+            {
+                buttonProjectorChangeAspect.Enabled = true;
+                buttonProjectorPower.Enabled = true;
             }
         }
     }
