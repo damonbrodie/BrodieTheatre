@@ -49,7 +49,7 @@ namespace BrodieTheatre
                         kodiSocketStream.Flush();
                         Thread thread = new Thread(kodiReadStream);
                         thread.Start();
-                        if (!kodiIsConnected)
+                        if (!kodiIsConnected) // Only write the log if we were previously disconnected
                         {
                             Logging.writeLog("Kodi:  Connected to Kodi JSON port");
                         }
