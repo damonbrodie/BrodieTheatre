@@ -97,7 +97,7 @@ namespace BrodieTheatre.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        [global::System.Configuration.DefaultSettingValueAttribute("6")]
         public int trayPausedLevel {
             get {
                 return ((int)(this["trayPausedLevel"]));
@@ -109,7 +109,7 @@ namespace BrodieTheatre.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        [global::System.Configuration.DefaultSettingValueAttribute("10")]
         public int trayStoppedLevel {
             get {
                 return ((int)(this["trayStoppedLevel"]));
@@ -121,7 +121,7 @@ namespace BrodieTheatre.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        [global::System.Configuration.DefaultSettingValueAttribute("3")]
         public int potsStoppedLevel {
             get {
                 return ((int)(this["potsStoppedLevel"]));
@@ -133,7 +133,7 @@ namespace BrodieTheatre.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        [global::System.Configuration.DefaultSettingValueAttribute("10")]
         public int trayEnteringLevel {
             get {
                 return ((int)(this["trayEnteringLevel"]));
@@ -145,7 +145,7 @@ namespace BrodieTheatre.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        [global::System.Configuration.DefaultSettingValueAttribute("10")]
         public int potsEnteringLevel {
             get {
                 return ((int)(this["potsEnteringLevel"]));
@@ -188,18 +188,6 @@ namespace BrodieTheatre.Properties {
             }
             set {
                 this["kodiJSONPort"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("127.0.0.1")]
-        public string kodiIP {
-            get {
-                return ((string)(this["kodiIP"]));
-            }
-            set {
-                this["kodiIP"] = value;
             }
         }
         
@@ -272,6 +260,18 @@ namespace BrodieTheatre.Properties {
             }
             set {
                 this["shutdownLatch"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool connectKodiLocalhost {
+            get {
+                return ((bool)(this["connectKodiLocalhost"]));
+            }
+            set {
+                this["connectKodiLocalhost"] = value;
             }
         }
     }

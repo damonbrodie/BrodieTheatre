@@ -21,7 +21,7 @@ namespace BrodieTheatre
     {
         public static string kodiBehindScreen = @"smb://10.0.0.7/Pictures/ht_0.jpg";
         public static bool kodiIsConnected = false;
-        public static string currentKodiIP = "";
+        public static bool connectKodiLocalhost = false;
         public static int currentKodiPort = 0;
         public static TcpClient tcpClient;
         public static NetworkStream kodiSocketStream;
@@ -32,14 +32,14 @@ namespace BrodieTheatre
 
         private static void kodiConnect()
         {
-            if (Properties.Settings.Default.kodiIP != String.Empty && Properties.Settings.Default.kodiJSONPort != 0)
+            if (Properties.Settings.Default.kodiJSONPort != 0)
             {
                 try
                 {
                     kodiStatusDisconnect(false);
                     tcpClient = new TcpClient();
                     tcpClient.ReceiveTimeout = 500;
-                    var result = tcpClient.BeginConnect(Properties.Settings.Default.kodiIP, Properties.Settings.Default.kodiJSONPort, null, null);
+                    var result = tcpClient.BeginConnect("127.0.0.1", Properties.Settings.Default.kodiJSONPort, null, null);
                     var success = result.AsyncWaitHandle.WaitOne(TimeSpan.FromSeconds(1));
                     if (success)
                     {

@@ -78,9 +78,9 @@ namespace BrodieTheatre
                 await HarmonyConnectAsync(true);
             }
 
-            if (currentKodiIP != Properties.Settings.Default.kodiIP || currentKodiPort != Properties.Settings.Default.kodiJSONPort)
+            if (connectKodiLocalhost != Properties.Settings.Default.connectKodiLocalhost || currentKodiPort != Properties.Settings.Default.kodiJSONPort)
             {
-                currentKodiIP = Properties.Settings.Default.kodiIP;
+                connectKodiLocalhost = Properties.Settings.Default.connectKodiLocalhost;
                 currentKodiPort = Properties.Settings.Default.kodiJSONPort;
                 kodiStatusDisconnect();
             }
