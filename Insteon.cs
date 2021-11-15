@@ -102,9 +102,9 @@ namespace BrodieTheatre
             if (Properties.Settings.Default.plmPort != string.Empty)
             {
                 plmConnected = false;
-                labelPLMstatus.Text = "Connecting";
-                Logging.writeLog("Insteon:  Connecting to PLM");
-                labelPLMstatus.ForeColor = System.Drawing.Color.ForestGreen;
+                labelPLMstatus.Text = "Disconnected";
+                Logging.writeLog("Insteon:  Connecting to PLM on serial port - " + Properties.Settings.Default.plmPort);
+                labelPLMstatus.ForeColor = System.Drawing.Color.Maroon;
 
                 powerlineModem = new Plm(Properties.Settings.Default.plmPort);
                 powerlineModem.Network.StandardMessageReceived += Network_StandardMessageReceived;
@@ -226,7 +226,7 @@ namespace BrodieTheatre
 
         public int insteonGetLightLevel(string address)
         {
-            int level = 0;
+            int level = -1;
             DeviceBase device;
             if (address == string.Empty) return 0;
             if (powerlineModem.Network.TryConnectToDevice(address, out device))
@@ -350,9 +350,6 @@ namespace BrodieTheatre
         {
             plmConnected = true;
             timerCheckPLM.Enabled = false;
-            formMain.labelPLMstatus.Text = "Connected";
-            Logging.writeLog("Insteon:  Connected to PLM");
-            formMain.labelPLMstatus.ForeColor = System.Drawing.Color.ForestGreen;
             formMain.insteonPoll();
         }
 
@@ -400,15 +397,33 @@ namespace BrodieTheatre
 
         private async void insteonPoll()
         {
+            bool connected = false;
+            int level;
             formMain.BeginInvoke(new Action(() =>
             {
-                formMain.trackBarTray.Value = insteonGetLightLevel(Properties.Settings.Default.trayAddress);
+                level = insteonGetLightLevel(Properties.Settings.Default.trayAddress);
+                if (level >= 0)
+                {
+                    formMain.trackBarTray.Value = level;
+                    connected = true;
+                }
             }));
             await doDelay(1200);
             formMain.BeginInvoke(new Action(() =>
             {
-                formMain.trackBarPots.Value = insteonGetLightLevel(Properties.Settings.Default.potsAddress);
+                level = insteonGetLightLevel(Properties.Settings.Default.potsAddress);
+                if (level >= 0)
+                {
+                    formMain.trackBarPots.Value = level;
+                    connected = true;
+                }
             }));
+            if (connected)
+            {
+                formMain.labelPLMstatus.Text = "Connected";
+                Logging.writeLog("Insteon:  Connected to PLM");
+                formMain.labelPLMstatus.ForeColor = System.Drawing.Color.ForestGreen;
+            }
         }
 
         private void timerInsteonPoll_Tick(object sender, EventArgs e)
