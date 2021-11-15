@@ -74,6 +74,13 @@ namespace BrodieTheatre
                             formMain.lightsToPlaybackLevel();
                         }));
                         break;
+                    case "F6":
+                        formMain.BeginInvoke(new Action(() =>
+                        {
+                            Logging.writeLog("Keyboard:  Caught keypress 'F6'");
+                            kodiShowBehindScreen();
+                        }));
+                        break;
                     case "F5":
                         formMain.BeginInvoke(new Action(() =>
                         {

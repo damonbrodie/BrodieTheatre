@@ -17,6 +17,7 @@ namespace BrodieTheatre
            F11 - Lights Off
            F9  - Lights to Stopped level
            F7  - Lights to Playback level
+           F6  - Show behind screen (picture)
            F5  - Projector Lens to Narrow aspect ratio
            F4  - Projector Lens to Wide aspect ratio
            F3  - Kodi next audio language (caught by Brodietheatre Kodi Addon)

@@ -11,7 +11,7 @@ using System.Collections.Generic;
    Numbering for JSON Messages
   
    99 - GetPlayer
-   98 - Show Image of behing projector
+   98 - Show Image of behind projector
   
 */
 
@@ -363,6 +363,7 @@ namespace BrodieTheatre
         public static void kodiShowBehindScreen()
         {
             kodiSendJson("{\"jsonrpc\": \"2.0\", \"method\": \"Player.Open\", \"params\": { \"item\": {\"file\": \"" + kodiBehindScreen + "\" }}, \"id\": \"98\"}");
+            Logging.writeLog("Kodi:  Showing behind the screen picture");
         }
 
         private void timerKodiConnect_Tick(object sender, EventArgs e)
