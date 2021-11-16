@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="startMinimized" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
+      <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="harmonyHubIP" Type="System.String" Scope="User">
       <Value Profile="(Default)">10.0.0.142</Value>
@@ -27,7 +27,7 @@
       <Value Profile="(Default)">10</Value>
     </Setting>
     <Setting Name="potsStoppedLevel" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">3</Value>
+      <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="trayEnteringLevel" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">10</Value>
@@ -51,13 +51,13 @@
       <Value Profile="(Default)">5</Value>
     </Setting>
     <Setting Name="lightingDelayProjectorOn" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">0</Value>
+      <Value Profile="(Default)">19</Value>
     </Setting>
     <Setting Name="potsPlaybackLevel" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="trayPlaybackLevel" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">0</Value>
+      <Value Profile="(Default)">3</Value>
     </Setting>
     <Setting Name="shutdownLatch" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">10</Value>

@@ -25,7 +25,7 @@ namespace BrodieTheatre.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
         public bool startMinimized {
             get {
                 return ((bool)(this["startMinimized"]));
@@ -121,7 +121,7 @@ namespace BrodieTheatre.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("3")]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
         public int potsStoppedLevel {
             get {
                 return ((int)(this["potsStoppedLevel"]));
@@ -217,7 +217,7 @@ namespace BrodieTheatre.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        [global::System.Configuration.DefaultSettingValueAttribute("19")]
         public int lightingDelayProjectorOn {
             get {
                 return ((int)(this["lightingDelayProjectorOn"]));
@@ -241,7 +241,7 @@ namespace BrodieTheatre.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        [global::System.Configuration.DefaultSettingValueAttribute("3")]
         public int trayPlaybackLevel {
             get {
                 return ((int)(this["trayPlaybackLevel"]));
