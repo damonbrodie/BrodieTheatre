@@ -14,8 +14,7 @@ namespace BrodieTheatre
 
           Mapped keypresses
            F12 - Lights to Entering level
-           F11 - Lights Off
-           F9  - Lights to Stopped level
+           F11 - Lights to Stopped level
            F7  - Lights to Playback level
            F6  - Show behind screen (picture)
            F5  - Projector Lens to Narrow aspect ratio
@@ -36,6 +35,7 @@ namespace BrodieTheatre
         public bool debugHarmony = false;
         public bool debugKodi = false;
         public bool debugProjector = false;
+        public bool demoRunning = false;
 
         public FormMain()
         {

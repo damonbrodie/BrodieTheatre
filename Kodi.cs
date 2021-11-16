@@ -260,7 +260,10 @@ namespace BrodieTheatre
                             Logging.writeLog("Kodi:  Kodi status changed to 'Stopped'");
                             insteonDoMotion(false);
                             labelKodiPlaybackStatus.Text = "Stopped";
-                            lightsToStoppedLevel();
+                            if (!demoRunning)
+                            {
+                                lightsToStoppedLevel();
+                            }
                         }));
                         break;
                     case "System.OnQuit":
@@ -293,6 +296,24 @@ namespace BrodieTheatre
                                 projectorQueueChangeAspect(ar);
                                 Logging.writeLog("Kodi:  Received Aspect Ratio: '" + kodiAspectRatio + "'");
                             }));
+
+                        }
+                        break;
+                    case "Other.demostatus":
+                        if (result["params"]["sender"] == "brodietheatre")
+                        {
+                            if (result["params"]["data"] == "starting")
+                            {
+                                demoRunning = true;
+                            }
+                            else
+                            {
+                                demoRunning = false;
+                                formMain.BeginInvoke(new Action(() =>
+                                {
+                                    lightsToStoppedLevel();
+                                }));
+                            }
 
                         }
                         break;

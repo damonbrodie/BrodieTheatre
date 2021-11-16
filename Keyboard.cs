@@ -57,13 +57,6 @@ namespace BrodieTheatre
                         formMain.BeginInvoke(new Action(() =>
                         {
                             Logging.writeLog("Keyboard:  Caught keypress 'F11'");
-                            formMain.lightsOff();
-                        }));
-                        break;
-                    case "F9":
-                        formMain.BeginInvoke(new Action(() =>
-                        {
-                            Logging.writeLog("Keyboard:  Caught keypress 'F9'");
                             formMain.lightsToStoppedLevel();
                         }));
                         break;
