@@ -35,7 +35,6 @@ namespace BrodieTheatre
         public bool debugHarmony = false;
         public bool debugKodi = false;
         public bool debugProjector = false;
-        public bool demoRunning = false;
 
         public FormMain()
         {
