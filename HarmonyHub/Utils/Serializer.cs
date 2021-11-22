@@ -23,7 +23,7 @@ namespace HarmonyHub.Utils
                 {
                     UseSimpleDictionaryFormat = true
                 });
-                return (T) dataContractJsonSerializer.ReadObject(stream);
+                return (T)dataContractJsonSerializer.ReadObject(stream);
             }
         }
 

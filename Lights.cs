@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Windows.Forms;
 using System.Collections.Generic;
+using System.Windows.Forms;
 
 
 namespace BrodieTheatre
@@ -43,7 +43,7 @@ namespace BrodieTheatre
             timerPotTrack.Enabled = true;
         }
 
-        private void setDelayedLightTimer ()
+        private void setDelayedLightTimer()
         {
             if (Properties.Settings.Default.lightingDelayProjectorOn > 0 && timerStartLights.Enabled == false)
             {
