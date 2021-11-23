@@ -115,9 +115,13 @@ namespace BrodieTheatre
                             }
                             formMain.labelProjectorPower.Text = "On";
                             formMain.buttonProjectorPower.Text = "Power Off";
-                            labelProjectorStatus.Text = "Connected";
-                            labelProjectorStatus.ForeColor = System.Drawing.Color.ForestGreen;
-                            currentProjectorPort = Properties.Settings.Default.projectorPort;
+                            if (labelProjectorStatus.Text != "Connected")
+                            {
+                                labelProjectorStatus.Text = "Connected";
+                                labelProjectorStatus.ForeColor = System.Drawing.Color.ForestGreen;
+                                currentProjectorPort = Properties.Settings.Default.projectorPort;
+                                Logging.writeLog("Projector:  Connected to Projector");
+                            }
                         }));
                     }
                     //  Projector is in Power off State
@@ -131,9 +135,13 @@ namespace BrodieTheatre
                             }
                             formMain.labelProjectorPower.Text = "Off";
                             formMain.buttonProjectorPower.Text = "Power On";
-                            labelProjectorStatus.Text = "Connected";
-                            labelProjectorStatus.ForeColor = System.Drawing.Color.ForestGreen;
-                            currentProjectorPort = Properties.Settings.Default.projectorPort;
+                            if (labelProjectorStatus.Text != "Connected")
+                            {
+                                labelProjectorStatus.Text = "Connected";
+                                labelProjectorStatus.ForeColor = System.Drawing.Color.ForestGreen;
+                                currentProjectorPort = Properties.Settings.Default.projectorPort;
+                                Logging.writeLog("Projector:  Connected to Projector");
+                            }
                         }));
                     }
                     break;

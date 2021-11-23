@@ -103,7 +103,7 @@ namespace BrodieTheatre
             {
                 plmConnected = false;
                 labelPLMstatus.Text = "Disconnected";
-                Logging.writeLog("Insteon:  Connecting to PLM on serial port - " + Properties.Settings.Default.plmPort);
+                Logging.writeLog("Insteon:  Connecting Serial Port " + Properties.Settings.Default.plmPort + " to PLM");
                 labelPLMstatus.ForeColor = System.Drawing.Color.Maroon;
 
                 powerlineModem = new Plm(Properties.Settings.Default.plmPort);
@@ -418,11 +418,16 @@ namespace BrodieTheatre
                     connected = true;
                 }
             }));
-            if (connected)
+            if (connected && formMain.labelPLMstatus.Text != "Connected")
             {
-                formMain.labelPLMstatus.Text = "Connected";
-                Logging.writeLog("Insteon:  Connected to PLM");
-                formMain.labelPLMstatus.ForeColor = System.Drawing.Color.ForestGreen;
+                formMain.BeginInvoke(new Action(() =>
+                {
+
+                    formMain.labelPLMstatus.Text = "Connected";
+                    Logging.writeLog("Insteon:  Connected to PLM");
+                    formMain.labelPLMstatus.ForeColor = System.Drawing.Color.ForestGreen;
+
+                }));
             }
         }
 
