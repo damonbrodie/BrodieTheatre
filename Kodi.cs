@@ -54,6 +54,8 @@ namespace BrodieTheatre
                             Logging.writeLog("Kodi:  Connected to Kodi JSON port");
                         }
                         kodiIsConnected = true;
+                        connectKodiLocalhost = Properties.Settings.Default.connectKodiLocalhost;
+                        currentKodiPort = Properties.Settings.Default.kodiJSONPort;
                         formMain.BeginInvoke(new Action(() =>
                         {
                             formMain.labelKodiStatus.Text = "Connected";
