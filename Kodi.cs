@@ -39,6 +39,8 @@ namespace BrodieTheatre
                     kodiStatusDisconnect(false);
                     tcpClient = new TcpClient();
                     tcpClient.ReceiveTimeout = 500;
+                    // Localhost is hardcoded below.  If we want to support Kodi on a regular IP, then we should read the 
+                    // Kodi Localhost flag here.
                     var result = tcpClient.BeginConnect("127.0.0.1", Properties.Settings.Default.kodiJSONPort, null, null);
                     var success = result.AsyncWaitHandle.WaitOne(TimeSpan.FromSeconds(1));
                     if (success)
@@ -73,7 +75,6 @@ namespace BrodieTheatre
         public static async void kodiReadStream()
         {
             char[] buffer = new char[100000];
-            //int bytesRead = 0;
             bool ended = false;
             bool gotSome = false;
             while (!ended)
@@ -100,7 +101,7 @@ namespace BrodieTheatre
                 {
                     ended = true;
                 }
-                if (gotSome)
+                if (gotSome)  // After we read from the buffer, don't wait as long to check again. 
                 {
                     await doDelay(100);
                 }
