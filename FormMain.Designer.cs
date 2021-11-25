@@ -67,8 +67,6 @@
             this.buttonProjectorPower = new System.Windows.Forms.Button();
             this.labelProjectorPower = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.buttonProjectorChangeAspect = new System.Windows.Forms.Button();
-            this.labelProjectorLensAspect = new System.Windows.Forms.Label();
             this.labelProjectorStatus = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -98,6 +96,7 @@
             this.timerInsteonPoll = new System.Windows.Forms.Timer(this.components);
             this.timerHarmonyPoll = new System.Windows.Forms.Timer(this.components);
             this.timerShutdown = new System.Windows.Forms.Timer(this.components);
+            this.comboBoxProjectorLensMemory = new System.Windows.Forms.ComboBox();
             this.menuStrip.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -481,11 +480,10 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.comboBoxProjectorLensMemory);
             this.groupBox4.Controls.Add(this.buttonProjectorPower);
             this.groupBox4.Controls.Add(this.labelProjectorPower);
             this.groupBox4.Controls.Add(this.label11);
-            this.groupBox4.Controls.Add(this.buttonProjectorChangeAspect);
-            this.groupBox4.Controls.Add(this.labelProjectorLensAspect);
             this.groupBox4.Controls.Add(this.labelProjectorStatus);
             this.groupBox4.Controls.Add(this.label8);
             this.groupBox4.Controls.Add(this.label7);
@@ -501,10 +499,10 @@
             // buttonProjectorPower
             // 
             this.buttonProjectorPower.Enabled = false;
-            this.buttonProjectorPower.Location = new System.Drawing.Point(57, 252);
+            this.buttonProjectorPower.Location = new System.Drawing.Point(171, 247);
             this.buttonProjectorPower.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.buttonProjectorPower.Name = "buttonProjectorPower";
-            this.buttonProjectorPower.Size = new System.Drawing.Size(131, 44);
+            this.buttonProjectorPower.Size = new System.Drawing.Size(199, 44);
             this.buttonProjectorPower.TabIndex = 23;
             this.buttonProjectorPower.Text = "Power On";
             this.buttonProjectorPower.UseVisualStyleBackColor = true;
@@ -531,30 +529,6 @@
             this.label11.Size = new System.Drawing.Size(136, 25);
             this.label11.TabIndex = 21;
             this.label11.Text = "Projector Status";
-            // 
-            // buttonProjectorChangeAspect
-            // 
-            this.buttonProjectorChangeAspect.Enabled = false;
-            this.buttonProjectorChangeAspect.Location = new System.Drawing.Point(218, 252);
-            this.buttonProjectorChangeAspect.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.buttonProjectorChangeAspect.Name = "buttonProjectorChangeAspect";
-            this.buttonProjectorChangeAspect.Size = new System.Drawing.Size(131, 44);
-            this.buttonProjectorChangeAspect.TabIndex = 20;
-            this.buttonProjectorChangeAspect.Text = "Wide Aspect";
-            this.buttonProjectorChangeAspect.UseVisualStyleBackColor = true;
-            this.buttonProjectorChangeAspect.Click += new System.EventHandler(this.buttonProjectorChangeAspect_Click);
-            // 
-            // labelProjectorLensAspect
-            // 
-            this.labelProjectorLensAspect.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.labelProjectorLensAspect.Location = new System.Drawing.Point(171, 189);
-            this.labelProjectorLensAspect.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.labelProjectorLensAspect.Name = "labelProjectorLensAspect";
-            this.labelProjectorLensAspect.Size = new System.Drawing.Size(199, 34);
-            this.labelProjectorLensAspect.TabIndex = 19;
-            this.labelProjectorLensAspect.Text = "Narrow";
-            this.labelProjectorLensAspect.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.labelProjectorLensAspect.TextChanged += new System.EventHandler(this.labelLensAspect_TextChanged);
             // 
             // labelProjectorStatus
             // 
@@ -779,6 +753,15 @@
             this.timerShutdown.Interval = 1000;
             this.timerShutdown.Tick += new System.EventHandler(this.timerShutdown_Tick);
             // 
+            // comboBoxProjectorLensMemory
+            // 
+            this.comboBoxProjectorLensMemory.FormattingEnabled = true;
+            this.comboBoxProjectorLensMemory.Location = new System.Drawing.Point(169, 191);
+            this.comboBoxProjectorLensMemory.Name = "comboBoxProjectorLensMemory";
+            this.comboBoxProjectorLensMemory.Size = new System.Drawing.Size(201, 33);
+            this.comboBoxProjectorLensMemory.TabIndex = 24;
+            this.comboBoxProjectorLensMemory.SelectedIndexChanged += new System.EventHandler(this.comboBoxProjectorLensMemory_SelectedIndexChanged);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
@@ -867,7 +850,6 @@
         private System.Windows.Forms.Timer timerStartLights;
         private System.Windows.Forms.Timer timerSensorStatus;
         private System.Windows.Forms.PictureBox pictureBox4;
-        private System.Windows.Forms.Label labelProjectorLensAspect;
         private System.Windows.Forms.Label labelProjectorStatus;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
@@ -875,7 +857,6 @@
         private System.Windows.Forms.Label labelRoomOccupancy;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.PictureBox pictureBox5;
-        private System.Windows.Forms.Button buttonProjectorChangeAspect;
         private System.Windows.Forms.Button buttonProjectorPower;
         private System.Windows.Forms.Label labelProjectorPower;
         private System.Windows.Forms.Label label11;
@@ -894,8 +875,9 @@
         private System.Windows.Forms.Label labelFanStatus;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatus;
-        private System.Windows.Forms.Timer timerShutdown;
         private System.Windows.Forms.ProgressBar progressBarShutdown;
         private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Timer timerShutdown;
+        private System.Windows.Forms.ComboBox comboBoxProjectorLensMemory;
     }
 }

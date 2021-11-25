@@ -65,5 +65,47 @@
     <Setting Name="connectKodiLocalhost" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
+    <Setting Name="projectorARSetting1" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="projectorARSetting2" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="projectorARSetting3" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="projectorARSetting4" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="projectorARSetting5" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="projectorARRangeHigh1" Type="System.Decimal" Scope="User">
+      <Value Profile="(Default)">1.10</Value>
+    </Setting>
+    <Setting Name="projectorARRangeLow2" Type="System.String" Scope="User">
+      <Value Profile="(Default)">1.11</Value>
+    </Setting>
+    <Setting Name="projectorARRangeHigh2" Type="System.Decimal" Scope="User">
+      <Value Profile="(Default)">2.00</Value>
+    </Setting>
+    <Setting Name="projectorARRangeLow3" Type="System.String" Scope="User">
+      <Value Profile="(Default)">2.01</Value>
+    </Setting>
+    <Setting Name="projectorARRangeHigh3" Type="System.Decimal" Scope="User">
+      <Value Profile="(Default)">2.20</Value>
+    </Setting>
+    <Setting Name="projectorARRangeLow4" Type="System.String" Scope="User">
+      <Value Profile="(Default)">2.21</Value>
+    </Setting>
+    <Setting Name="projectorARRangeHigh4" Type="System.Decimal" Scope="User">
+      <Value Profile="(Default)">2.30</Value>
+    </Setting>
+    <Setting Name="projectorARRangeLow5" Type="System.String" Scope="User">
+      <Value Profile="(Default)">2.31</Value>
+    </Setting>
+    <Setting Name="projectorARRangeHigh5" Type="System.Decimal" Scope="User">
+      <Value Profile="(Default)">3.00</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

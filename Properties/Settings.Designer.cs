@@ -274,5 +274,173 @@ namespace BrodieTheatre.Properties {
                 this["connectKodiLocalhost"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string projectorARSetting1 {
+            get {
+                return ((string)(this["projectorARSetting1"]));
+            }
+            set {
+                this["projectorARSetting1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string projectorARSetting2 {
+            get {
+                return ((string)(this["projectorARSetting2"]));
+            }
+            set {
+                this["projectorARSetting2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string projectorARSetting3 {
+            get {
+                return ((string)(this["projectorARSetting3"]));
+            }
+            set {
+                this["projectorARSetting3"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string projectorARSetting4 {
+            get {
+                return ((string)(this["projectorARSetting4"]));
+            }
+            set {
+                this["projectorARSetting4"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string projectorARSetting5 {
+            get {
+                return ((string)(this["projectorARSetting5"]));
+            }
+            set {
+                this["projectorARSetting5"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1.10")]
+        public decimal projectorARRangeHigh1 {
+            get {
+                return ((decimal)(this["projectorARRangeHigh1"]));
+            }
+            set {
+                this["projectorARRangeHigh1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1.11")]
+        public string projectorARRangeLow2 {
+            get {
+                return ((string)(this["projectorARRangeLow2"]));
+            }
+            set {
+                this["projectorARRangeLow2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("2.00")]
+        public decimal projectorARRangeHigh2 {
+            get {
+                return ((decimal)(this["projectorARRangeHigh2"]));
+            }
+            set {
+                this["projectorARRangeHigh2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("2.01")]
+        public string projectorARRangeLow3 {
+            get {
+                return ((string)(this["projectorARRangeLow3"]));
+            }
+            set {
+                this["projectorARRangeLow3"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("2.20")]
+        public decimal projectorARRangeHigh3 {
+            get {
+                return ((decimal)(this["projectorARRangeHigh3"]));
+            }
+            set {
+                this["projectorARRangeHigh3"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("2.21")]
+        public string projectorARRangeLow4 {
+            get {
+                return ((string)(this["projectorARRangeLow4"]));
+            }
+            set {
+                this["projectorARRangeLow4"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("2.30")]
+        public decimal projectorARRangeHigh4 {
+            get {
+                return ((decimal)(this["projectorARRangeHigh4"]));
+            }
+            set {
+                this["projectorARRangeHigh4"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("2.31")]
+        public string projectorARRangeLow5 {
+            get {
+                return ((string)(this["projectorARRangeLow5"]));
+            }
+            set {
+                this["projectorARRangeLow5"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("3.00")]
+        public decimal projectorARRangeHigh5 {
+            get {
+                return ((decimal)(this["projectorARRangeHigh5"]));
+            }
+            set {
+                this["projectorARRangeHigh5"] = value;
+            }
+        }
     }
 }

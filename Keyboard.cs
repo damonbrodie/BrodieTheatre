@@ -78,14 +78,14 @@ namespace BrodieTheatre
                         formMain.BeginInvoke(new Action(() =>
                         {
                             Logging.writeLog("Keyboard:  Caught keypress 'F5'");
-                            formMain.projectorQueueChangeAspect((float)1.85);
+                            formMain.projectorQueueChangeAspect(0);  // Narrowest Zoom
                         }));
                         break;
                     case "F4":
                         formMain.BeginInvoke(new Action(() =>
                         {
                             Logging.writeLog("Keyboard:  Caught keypress 'F4'");
-                            formMain.projectorQueueChangeAspect((float)2.0);
+                            formMain.projectorQueueChangeAspect(formMain.comboBoxProjectorLensMemory.Items.Count - 1); // Widest Zoom
                         }));
                         break;
                  }

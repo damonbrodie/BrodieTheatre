@@ -278,10 +278,10 @@ namespace BrodieTheatre
                         if (result["params"]["sender"] == "brodietheatre")
                         {
                             string kodiAspectRatio = result["params"]["data"];
-                            float ar = 0;
+                            decimal ar = 1.87m;
                             try
                             {
-                                ar = float.Parse(kodiAspectRatio);
+                                ar = Decimal.Parse(kodiAspectRatio);
                             }
                             catch (FormatException)
                             {
@@ -293,7 +293,8 @@ namespace BrodieTheatre
    
                             formMain.BeginInvoke(new Action(() =>
                             {
-                                projectorQueueChangeAspect(ar);
+                                int index = projectorGetLetMemoryFromAR(ar);
+                                projectorQueueChangeAspect(index);
                                 Logging.writeLog("Kodi:  Received Aspect Ratio: '" + kodiAspectRatio + "'");
                             }));
 

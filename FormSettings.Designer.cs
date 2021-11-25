@@ -43,11 +43,6 @@
             this.textBoxHarmonyHubIP = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.labelExhaustFanDelayOffMinutes = new System.Windows.Forms.Label();
-            this.label41 = new System.Windows.Forms.Label();
-            this.labelExhaustFanDelayOff = new System.Windows.Forms.Label();
-            this.trackBarExhaustFanDelayOff = new System.Windows.Forms.TrackBar();
-            this.label43 = new System.Windows.Forms.Label();
             this.labelInsteonMotionLatchMinutes = new System.Windows.Forms.Label();
             this.label34 = new System.Windows.Forms.Label();
             this.labelInsteonMotionLatch = new System.Windows.Forms.Label();
@@ -64,6 +59,27 @@
             this.comboBoxInsteonPort = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.comboBoxUsePJ5 = new System.Windows.Forms.ComboBox();
+            this.label40 = new System.Windows.Forms.Label();
+            this.numericUpDownAR5 = new System.Windows.Forms.NumericUpDown();
+            this.labelAR5From = new System.Windows.Forms.Label();
+            this.comboBoxUsePJ4 = new System.Windows.Forms.ComboBox();
+            this.label36 = new System.Windows.Forms.Label();
+            this.numericUpDownAR4 = new System.Windows.Forms.NumericUpDown();
+            this.labelAR4From = new System.Windows.Forms.Label();
+            this.comboBoxUsePJ3 = new System.Windows.Forms.ComboBox();
+            this.label29 = new System.Windows.Forms.Label();
+            this.numericUpDownAR3 = new System.Windows.Forms.NumericUpDown();
+            this.labelAR3From = new System.Windows.Forms.Label();
+            this.comboBoxUsePJ2 = new System.Windows.Forms.ComboBox();
+            this.label24 = new System.Windows.Forms.Label();
+            this.numericUpDownAR2 = new System.Windows.Forms.NumericUpDown();
+            this.labelAR2From = new System.Windows.Forms.Label();
+            this.comboBoxUsePJ1 = new System.Windows.Forms.ComboBox();
+            this.label27 = new System.Windows.Forms.Label();
+            this.numericUpDownAR1 = new System.Windows.Forms.NumericUpDown();
+            this.labelAR1From = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
             this.comboBoxProjectorPort = new System.Windows.Forms.ComboBox();
             this.label21 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
@@ -113,9 +129,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownKodiPort)).BeginInit();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarExhaustFanDelayOff)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarInsteonMotionMinimumTime)).BeginInit();
             this.tabPage5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAR5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAR4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAR3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAR2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAR1)).BeginInit();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarDelayLightingProjectorStart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarPotsStopped)).BeginInit();
@@ -280,11 +300,6 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.labelExhaustFanDelayOffMinutes);
-            this.tabPage2.Controls.Add(this.label41);
-            this.tabPage2.Controls.Add(this.labelExhaustFanDelayOff);
-            this.tabPage2.Controls.Add(this.trackBarExhaustFanDelayOff);
-            this.tabPage2.Controls.Add(this.label43);
             this.tabPage2.Controls.Add(this.labelInsteonMotionLatchMinutes);
             this.tabPage2.Controls.Add(this.label34);
             this.tabPage2.Controls.Add(this.labelInsteonMotionLatch);
@@ -308,42 +323,6 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Insteon";
             this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // labelExhaustFanDelayOffMinutes
-            // 
-            this.labelExhaustFanDelayOffMinutes.Location = new System.Drawing.Point(0, 0);
-            this.labelExhaustFanDelayOffMinutes.Name = "labelExhaustFanDelayOffMinutes";
-            this.labelExhaustFanDelayOffMinutes.Size = new System.Drawing.Size(111, 29);
-            this.labelExhaustFanDelayOffMinutes.TabIndex = 0;
-            // 
-            // label41
-            // 
-            this.label41.Location = new System.Drawing.Point(0, 0);
-            this.label41.Name = "label41";
-            this.label41.Size = new System.Drawing.Size(111, 29);
-            this.label41.TabIndex = 1;
-            // 
-            // labelExhaustFanDelayOff
-            // 
-            this.labelExhaustFanDelayOff.Location = new System.Drawing.Point(0, 0);
-            this.labelExhaustFanDelayOff.Name = "labelExhaustFanDelayOff";
-            this.labelExhaustFanDelayOff.Size = new System.Drawing.Size(111, 29);
-            this.labelExhaustFanDelayOff.TabIndex = 2;
-            // 
-            // trackBarExhaustFanDelayOff
-            // 
-            this.trackBarExhaustFanDelayOff.Location = new System.Drawing.Point(0, 0);
-            this.trackBarExhaustFanDelayOff.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.trackBarExhaustFanDelayOff.Name = "trackBarExhaustFanDelayOff";
-            this.trackBarExhaustFanDelayOff.Size = new System.Drawing.Size(116, 69);
-            this.trackBarExhaustFanDelayOff.TabIndex = 3;
-            // 
-            // label43
-            // 
-            this.label43.Location = new System.Drawing.Point(0, 0);
-            this.label43.Name = "label43";
-            this.label43.Size = new System.Drawing.Size(111, 29);
-            this.label43.TabIndex = 4;
             // 
             // labelInsteonMotionLatchMinutes
             // 
@@ -494,6 +473,27 @@
             // 
             // tabPage5
             // 
+            this.tabPage5.Controls.Add(this.comboBoxUsePJ5);
+            this.tabPage5.Controls.Add(this.label40);
+            this.tabPage5.Controls.Add(this.numericUpDownAR5);
+            this.tabPage5.Controls.Add(this.labelAR5From);
+            this.tabPage5.Controls.Add(this.comboBoxUsePJ4);
+            this.tabPage5.Controls.Add(this.label36);
+            this.tabPage5.Controls.Add(this.numericUpDownAR4);
+            this.tabPage5.Controls.Add(this.labelAR4From);
+            this.tabPage5.Controls.Add(this.comboBoxUsePJ3);
+            this.tabPage5.Controls.Add(this.label29);
+            this.tabPage5.Controls.Add(this.numericUpDownAR3);
+            this.tabPage5.Controls.Add(this.labelAR3From);
+            this.tabPage5.Controls.Add(this.comboBoxUsePJ2);
+            this.tabPage5.Controls.Add(this.label24);
+            this.tabPage5.Controls.Add(this.numericUpDownAR2);
+            this.tabPage5.Controls.Add(this.labelAR2From);
+            this.tabPage5.Controls.Add(this.comboBoxUsePJ1);
+            this.tabPage5.Controls.Add(this.label27);
+            this.tabPage5.Controls.Add(this.numericUpDownAR1);
+            this.tabPage5.Controls.Add(this.labelAR1From);
+            this.tabPage5.Controls.Add(this.label23);
             this.tabPage5.Controls.Add(this.comboBoxProjectorPort);
             this.tabPage5.Controls.Add(this.label21);
             this.tabPage5.Location = new System.Drawing.Point(4, 34);
@@ -503,6 +503,315 @@
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "Projector";
             this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // comboBoxUsePJ5
+            // 
+            this.comboBoxUsePJ5.FormattingEnabled = true;
+            this.comboBoxUsePJ5.Location = new System.Drawing.Point(339, 399);
+            this.comboBoxUsePJ5.Name = "comboBoxUsePJ5";
+            this.comboBoxUsePJ5.Size = new System.Drawing.Size(182, 33);
+            this.comboBoxUsePJ5.TabIndex = 26;
+            // 
+            // label40
+            // 
+            this.label40.AutoSize = true;
+            this.label40.Location = new System.Drawing.Point(129, 402);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(29, 25);
+            this.label40.TabIndex = 25;
+            this.label40.Text = "to";
+            // 
+            // numericUpDownAR5
+            // 
+            this.numericUpDownAR5.DecimalPlaces = 2;
+            this.numericUpDownAR5.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.numericUpDownAR5.Location = new System.Drawing.Point(181, 399);
+            this.numericUpDownAR5.Maximum = new decimal(new int[] {
+            300,
+            0,
+            0,
+            131072});
+            this.numericUpDownAR5.Minimum = new decimal(new int[] {
+            109,
+            0,
+            0,
+            131072});
+            this.numericUpDownAR5.Name = "numericUpDownAR5";
+            this.numericUpDownAR5.Size = new System.Drawing.Size(91, 31);
+            this.numericUpDownAR5.TabIndex = 24;
+            this.numericUpDownAR5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numericUpDownAR5.Value = new decimal(new int[] {
+            109,
+            0,
+            0,
+            131072});
+            this.numericUpDownAR5.ValueChanged += new System.EventHandler(this.numericUpDownAR5_ValueChanged);
+            // 
+            // labelAR5From
+            // 
+            this.labelAR5From.BackColor = System.Drawing.SystemColors.Window;
+            this.labelAR5From.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelAR5From.Location = new System.Drawing.Point(49, 399);
+            this.labelAR5From.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelAR5From.Name = "labelAR5From";
+            this.labelAR5From.Size = new System.Drawing.Size(60, 31);
+            this.labelAR5From.TabIndex = 23;
+            this.labelAR5From.Text = "1.00";
+            this.labelAR5From.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelAR5From.TextChanged += new System.EventHandler(this.labelAR5From_TextChanged);
+            // 
+            // comboBoxUsePJ4
+            // 
+            this.comboBoxUsePJ4.FormattingEnabled = true;
+            this.comboBoxUsePJ4.Location = new System.Drawing.Point(339, 346);
+            this.comboBoxUsePJ4.Name = "comboBoxUsePJ4";
+            this.comboBoxUsePJ4.Size = new System.Drawing.Size(182, 33);
+            this.comboBoxUsePJ4.TabIndex = 22;
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.Location = new System.Drawing.Point(129, 349);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(29, 25);
+            this.label36.TabIndex = 21;
+            this.label36.Text = "to";
+            // 
+            // numericUpDownAR4
+            // 
+            this.numericUpDownAR4.DecimalPlaces = 2;
+            this.numericUpDownAR4.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.numericUpDownAR4.Location = new System.Drawing.Point(181, 346);
+            this.numericUpDownAR4.Maximum = new decimal(new int[] {
+            298,
+            0,
+            0,
+            131072});
+            this.numericUpDownAR4.Minimum = new decimal(new int[] {
+            107,
+            0,
+            0,
+            131072});
+            this.numericUpDownAR4.Name = "numericUpDownAR4";
+            this.numericUpDownAR4.Size = new System.Drawing.Size(91, 31);
+            this.numericUpDownAR4.TabIndex = 20;
+            this.numericUpDownAR4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numericUpDownAR4.Value = new decimal(new int[] {
+            107,
+            0,
+            0,
+            131072});
+            this.numericUpDownAR4.ValueChanged += new System.EventHandler(this.numericUpDownAR4_ValueChanged);
+            // 
+            // labelAR4From
+            // 
+            this.labelAR4From.BackColor = System.Drawing.SystemColors.Window;
+            this.labelAR4From.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelAR4From.Location = new System.Drawing.Point(49, 346);
+            this.labelAR4From.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelAR4From.Name = "labelAR4From";
+            this.labelAR4From.Size = new System.Drawing.Size(60, 31);
+            this.labelAR4From.TabIndex = 19;
+            this.labelAR4From.Text = "1.00";
+            this.labelAR4From.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelAR4From.TextChanged += new System.EventHandler(this.labelAR4From_TextChanged);
+            // 
+            // comboBoxUsePJ3
+            // 
+            this.comboBoxUsePJ3.FormattingEnabled = true;
+            this.comboBoxUsePJ3.Location = new System.Drawing.Point(339, 293);
+            this.comboBoxUsePJ3.Name = "comboBoxUsePJ3";
+            this.comboBoxUsePJ3.Size = new System.Drawing.Size(182, 33);
+            this.comboBoxUsePJ3.TabIndex = 18;
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(129, 296);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(29, 25);
+            this.label29.TabIndex = 17;
+            this.label29.Text = "to";
+            // 
+            // numericUpDownAR3
+            // 
+            this.numericUpDownAR3.DecimalPlaces = 2;
+            this.numericUpDownAR3.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.numericUpDownAR3.Location = new System.Drawing.Point(181, 293);
+            this.numericUpDownAR3.Maximum = new decimal(new int[] {
+            296,
+            0,
+            0,
+            131072});
+            this.numericUpDownAR3.Minimum = new decimal(new int[] {
+            105,
+            0,
+            0,
+            131072});
+            this.numericUpDownAR3.Name = "numericUpDownAR3";
+            this.numericUpDownAR3.Size = new System.Drawing.Size(91, 31);
+            this.numericUpDownAR3.TabIndex = 16;
+            this.numericUpDownAR3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numericUpDownAR3.Value = new decimal(new int[] {
+            105,
+            0,
+            0,
+            131072});
+            this.numericUpDownAR3.ValueChanged += new System.EventHandler(this.numericUpDownAR3_ValueChanged);
+            // 
+            // labelAR3From
+            // 
+            this.labelAR3From.BackColor = System.Drawing.SystemColors.Window;
+            this.labelAR3From.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelAR3From.Location = new System.Drawing.Point(49, 293);
+            this.labelAR3From.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelAR3From.Name = "labelAR3From";
+            this.labelAR3From.Size = new System.Drawing.Size(60, 31);
+            this.labelAR3From.TabIndex = 15;
+            this.labelAR3From.Text = "1.00";
+            this.labelAR3From.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelAR3From.TextChanged += new System.EventHandler(this.labelAR3From_TextChanged);
+            // 
+            // comboBoxUsePJ2
+            // 
+            this.comboBoxUsePJ2.FormattingEnabled = true;
+            this.comboBoxUsePJ2.Location = new System.Drawing.Point(339, 240);
+            this.comboBoxUsePJ2.Name = "comboBoxUsePJ2";
+            this.comboBoxUsePJ2.Size = new System.Drawing.Size(182, 33);
+            this.comboBoxUsePJ2.TabIndex = 14;
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(129, 243);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(29, 25);
+            this.label24.TabIndex = 13;
+            this.label24.Text = "to";
+            // 
+            // numericUpDownAR2
+            // 
+            this.numericUpDownAR2.DecimalPlaces = 2;
+            this.numericUpDownAR2.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.numericUpDownAR2.Location = new System.Drawing.Point(181, 240);
+            this.numericUpDownAR2.Maximum = new decimal(new int[] {
+            294,
+            0,
+            0,
+            131072});
+            this.numericUpDownAR2.Minimum = new decimal(new int[] {
+            103,
+            0,
+            0,
+            131072});
+            this.numericUpDownAR2.Name = "numericUpDownAR2";
+            this.numericUpDownAR2.Size = new System.Drawing.Size(91, 31);
+            this.numericUpDownAR2.TabIndex = 12;
+            this.numericUpDownAR2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numericUpDownAR2.Value = new decimal(new int[] {
+            103,
+            0,
+            0,
+            131072});
+            this.numericUpDownAR2.ValueChanged += new System.EventHandler(this.numericUpDownAR2_ValueChanged);
+            // 
+            // labelAR2From
+            // 
+            this.labelAR2From.BackColor = System.Drawing.SystemColors.Window;
+            this.labelAR2From.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelAR2From.Location = new System.Drawing.Point(49, 240);
+            this.labelAR2From.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelAR2From.Name = "labelAR2From";
+            this.labelAR2From.Size = new System.Drawing.Size(60, 31);
+            this.labelAR2From.TabIndex = 11;
+            this.labelAR2From.Text = "1.00";
+            this.labelAR2From.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelAR2From.TextChanged += new System.EventHandler(this.labelAR2From_TextChanged);
+            // 
+            // comboBoxUsePJ1
+            // 
+            this.comboBoxUsePJ1.FormattingEnabled = true;
+            this.comboBoxUsePJ1.Location = new System.Drawing.Point(339, 182);
+            this.comboBoxUsePJ1.Name = "comboBoxUsePJ1";
+            this.comboBoxUsePJ1.Size = new System.Drawing.Size(182, 33);
+            this.comboBoxUsePJ1.TabIndex = 10;
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(129, 190);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(29, 25);
+            this.label27.TabIndex = 9;
+            this.label27.Text = "to";
+            // 
+            // numericUpDownAR1
+            // 
+            this.numericUpDownAR1.DecimalPlaces = 2;
+            this.numericUpDownAR1.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.numericUpDownAR1.Location = new System.Drawing.Point(181, 187);
+            this.numericUpDownAR1.Maximum = new decimal(new int[] {
+            292,
+            0,
+            0,
+            131072});
+            this.numericUpDownAR1.Minimum = new decimal(new int[] {
+            101,
+            0,
+            0,
+            131072});
+            this.numericUpDownAR1.Name = "numericUpDownAR1";
+            this.numericUpDownAR1.Size = new System.Drawing.Size(91, 31);
+            this.numericUpDownAR1.TabIndex = 8;
+            this.numericUpDownAR1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numericUpDownAR1.Value = new decimal(new int[] {
+            101,
+            0,
+            0,
+            131072});
+            this.numericUpDownAR1.ValueChanged += new System.EventHandler(this.numericUpDownAR1_ValueChanged);
+            // 
+            // labelAR1From
+            // 
+            this.labelAR1From.BackColor = System.Drawing.SystemColors.Window;
+            this.labelAR1From.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelAR1From.Location = new System.Drawing.Point(49, 187);
+            this.labelAR1From.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelAR1From.Name = "labelAR1From";
+            this.labelAR1From.Size = new System.Drawing.Size(60, 31);
+            this.labelAR1From.TabIndex = 6;
+            this.labelAR1From.Text = "1.00";
+            this.labelAR1From.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label23.Location = new System.Drawing.Point(27, 135);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(125, 25);
+            this.label23.TabIndex = 5;
+            this.label23.Text = "Aspect Ratio:";
             // 
             // comboBoxProjectorPort
             // 
@@ -994,7 +1303,7 @@
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(447, 798);
+            this.buttonSave.Location = new System.Drawing.Point(467, 786);
             this.buttonSave.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(124, 44);
@@ -1014,7 +1323,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(604, 872);
+            this.ClientSize = new System.Drawing.Size(604, 844);
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.tabControl);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -1033,10 +1342,14 @@
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarExhaustFanDelayOff)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarInsteonMotionMinimumTime)).EndInit();
             this.tabPage5.ResumeLayout(false);
             this.tabPage5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAR5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAR4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAR3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAR2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAR1)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarDelayLightingProjectorStart)).EndInit();
@@ -1122,11 +1435,6 @@
         private System.Windows.Forms.Label labelDelayLightingProjectorStart;
         private System.Windows.Forms.TrackBar trackBarDelayLightingProjectorStart;
         private System.Windows.Forms.Label label39;
-        private System.Windows.Forms.Label labelExhaustFanDelayOffMinutes;
-        private System.Windows.Forms.Label label41;
-        private System.Windows.Forms.Label labelExhaustFanDelayOff;
-        private System.Windows.Forms.TrackBar trackBarExhaustFanDelayOff;
-        private System.Windows.Forms.Label label43;
         private System.Windows.Forms.OpenFileDialog openFileDialogGoogleCredentials;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
@@ -1136,5 +1444,26 @@
         private System.Windows.Forms.CheckBox checkBoxStartWithWindows;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.CheckBox checkBoxConnectKodiLocalhost;
+        private System.Windows.Forms.ComboBox comboBoxUsePJ4;
+        private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.NumericUpDown numericUpDownAR4;
+        private System.Windows.Forms.Label labelAR4From;
+        private System.Windows.Forms.ComboBox comboBoxUsePJ3;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.NumericUpDown numericUpDownAR3;
+        private System.Windows.Forms.Label labelAR3From;
+        private System.Windows.Forms.ComboBox comboBoxUsePJ2;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.NumericUpDown numericUpDownAR2;
+        private System.Windows.Forms.Label labelAR2From;
+        private System.Windows.Forms.ComboBox comboBoxUsePJ1;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.NumericUpDown numericUpDownAR1;
+        private System.Windows.Forms.Label labelAR1From;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.ComboBox comboBoxUsePJ5;
+        private System.Windows.Forms.Label label40;
+        private System.Windows.Forms.NumericUpDown numericUpDownAR5;
+        private System.Windows.Forms.Label labelAR5From;
     }
 }

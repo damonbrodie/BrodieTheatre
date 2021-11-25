@@ -13,12 +13,22 @@ namespace BrodieTheatre
         public string currentProjectorPort;
         public class ProjectorLensChange
         {
-            public float newAspect = 0;
+            public int newLensMemory = 0;
             public bool force = false;
             public string powerCommand = null;
         }
 
         public ProjectorLensChange projectorCommand = new ProjectorLensChange();
+
+        public List<string> panasonic_pj_codes = new List<string> 
+        {
+            "VXX:LMLI0=+00000",
+            "VXX:LMLI0=+00001",
+            "VXX:LMLI0=+00002",
+            "VXX:LMLI0=+00003",
+            "VXX:LMLI0=+00004",
+            "VXX:LMLI0=+00005"
+        };
 
         private void projectorConnect()
         {
@@ -167,18 +177,6 @@ namespace BrodieTheatre
             }
         }
 
-        private void buttonProjectorChangeAspect_Click(object sender, EventArgs e)
-        {
-            if (buttonProjectorChangeAspect.Text == "Narrow Aspect")
-            {
-                projectorQueueChangeAspect((float)1.0); //Narrow
-            }
-            else
-            {
-                projectorQueueChangeAspect((float)2.0); //Wide
-            }
-        }
-
         private void timerCheckProjector_Tick(object sender, EventArgs e)
         {
             if (labelProjectorStatus.Text == "Connected")
@@ -187,57 +185,76 @@ namespace BrodieTheatre
             }
         }
 
-        private void projectorChangeAspect(float aspect, bool force=false)
+        private void projectorChangeAspect(int index, bool force=false)
         {
-            if (aspect <= 0)
-            {
-                return;
-            }
+
             timerProjectorControl.Enabled = true;
-            buttonProjectorChangeAspect.Enabled = false;
-            List<string> pj_codes = new List<string> {
-                "VXX:LMLI0=+00000",
-                "VXX:LMLI0=+00001",
-                "VXX:LMLI0=+00002",
-                "VXX:LMLI0=+00003",
-                "VXX:LMLI0=+00004",
-                "VXX:LMLI0=+00005"
-            };
+
             projectorLastCommand = "Lens";
-            if (aspect < 1.9 && (force || labelProjectorLensAspect.Text != "Narrow"))
-            {
-                projectorSendCommand("Change to narrow aspect", pj_codes[0]);
-                labelProjectorLensAspect.Text = "Narrow";
-                Logging.writeLog("Projector:  Changing lens aspect ratio to 'narrow'");
-            }
-            else if (aspect >= 1.9 && (force || labelProjectorLensAspect.Text != "Wide"))
-            {
-                projectorSendCommand("Change to wide aspect", pj_codes[1]);
-                labelProjectorLensAspect.Text = "Wide";
-                Logging.writeLog("Projector:  Changing lens aspect ratio to 'wide'");
-            }
+            projectorSendCommand("Change zoom to: " + panasonic_pj_labels[index], panasonic_pj_codes[index]);
             projectorCommand.force = false;
         }
 
         // "force" is used to request a change even in the app believes the lens is already
         // at that setting.  Used at startup time to ensure the lens isn't in the wrong state
         // from the previous projector shutdown
-        private void projectorQueueChangeAspect(float aspect, bool force=false)
+        private void projectorQueueChangeAspect(int index, bool force=false)
         {
             if (labelProjectorPower.Text == "On")
-            {
+            { 
                 if (timerProjectorControl.Enabled == true)
                 {
                     // Wait for the last Aspect change to finish
-                    Logging.writeLog("Projector:  Queueing Aspect Ratio change - " + aspect.ToString());
-                    projectorCommand.newAspect = aspect;
+                    Logging.writeLog("Projector:  Queueing Lens Memory change - " + panasonic_pj_labels[index]);
+                    projectorCommand.newLensMemory = index;
                     projectorCommand.force = force;
                 }
-                else
+                else  // Nothing is queued - go ahead and change it now.
                 {
-                    projectorChangeAspect(aspect, force);
-                }
+                    projectorChangeAspect(index, force);
+                }                
             }
+        }
+
+        private int projectorGetLetMemoryFromAR(decimal decimalAspect)
+        {
+            int index = -1;
+            int compareLow = Decimal.Compare(decimalAspect, 1.0m);
+            int compareHigh = Decimal.Compare(decimalAspect, Properties.Settings.Default.projectorARRangeHigh1);
+            if (compareLow >= 0 && compareHigh <= 0)
+            {
+                index = 0;
+            }
+            compareLow = Decimal.Compare(decimalAspect, compareHigh);
+            compareHigh = Decimal.Compare(decimalAspect, Properties.Settings.Default.projectorARRangeHigh2);
+            if (compareLow > 0 && compareHigh <= 0)
+            {
+                index = 1;
+            }
+            compareLow = Decimal.Compare(decimalAspect, compareHigh);
+            compareHigh = Decimal.Compare(decimalAspect, Properties.Settings.Default.projectorARRangeHigh3);
+            if (compareLow > 0 && compareHigh <= 0)
+            {
+                index = 2;
+            }
+            compareLow = Decimal.Compare(decimalAspect, compareHigh);
+            compareHigh = Decimal.Compare(decimalAspect, Properties.Settings.Default.projectorARRangeHigh4);
+            if (compareLow > 0 && compareHigh <= 0)
+            {
+                index = 3;
+            }
+            compareLow = Decimal.Compare(decimalAspect, compareHigh);
+            compareHigh = Decimal.Compare(decimalAspect, Properties.Settings.Default.projectorARRangeHigh5);
+            if (compareLow > 0 && compareHigh <= 0)
+            {
+                index = 4;
+            }
+            if (index < 0)
+            {
+                Logging.writeLog("Projector:  Error - index out of range in projectorChangeAspect");
+            }
+            return index;
+            
         }
 
         private void timerProjectorControl_Tick(object sender, EventArgs e)
@@ -254,15 +271,15 @@ namespace BrodieTheatre
                 }
                 projectorCommand.powerCommand = null;
             }
-            else if (projectorCommand.newAspect > 0)
+            else if (projectorCommand.newLensMemory >= 0)
             {
                 // A queued projector lens aspect ratio change is waiting
-                projectorChangeAspect(projectorCommand.newAspect, projectorCommand.force);
-                projectorCommand.newAspect = 0;
+                projectorChangeAspect(projectorCommand.newLensMemory, projectorCommand.force);
+                projectorCommand.newLensMemory = -1;
                 projectorCommand.force = false;
-                buttonProjectorChangeAspect.Enabled = true;
+                comboBoxProjectorLensMemory.Enabled = true;
             }
-            if (projectorCommand.powerCommand == null && projectorCommand.newAspect == 0)
+            if (projectorCommand.powerCommand == null && projectorCommand.newLensMemory < 0)
             {
                 timerProjectorControl.Enabled = false;
             }
@@ -277,7 +294,7 @@ namespace BrodieTheatre
             
             labelProjectorPower.Text = "Powering On";
             // Set the Projector to the current AR in the UI to ensure we are in sync.
-            projectorCommand.newAspect = 1;
+            projectorCommand.newLensMemory = 0;
             projectorCommand.force = true;
             if (timerProjectorControl.Enabled == true)
             {
@@ -311,28 +328,40 @@ namespace BrodieTheatre
             }           
         }
 
-        private void labelLensAspect_TextChanged(object sender, EventArgs e)
+        private void comboBoxProjectorLensMemory_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (labelProjectorLensAspect.Text == "Narrow")
-            {
-                buttonProjectorChangeAspect.Text = "Wide Aspect";
-            }
-            else
-            {
-                buttonProjectorChangeAspect.Text = "Narrow Aspect";
-            }
+            projectorQueueChangeAspect(comboBoxProjectorLensMemory.SelectedIndex);
         }
+
         private void labelProjectorStatus_TextChanged(object sender, EventArgs e)
         {
             if (labelProjectorStatus.Text == "Disconnected")
             {
-                buttonProjectorChangeAspect.Enabled = false;
+                comboBoxProjectorLensMemory.Enabled = false;
                 buttonProjectorPower.Enabled = false;
             }
             else if (labelProjectorStatus.Text == "Connected")
             {
-                buttonProjectorChangeAspect.Enabled = true;
+                if (labelProjectorStatus.Text == "On")
+                {
+                    comboBoxProjectorLensMemory.Enabled = true;
+                }
+                else
+                {
+                    comboBoxProjectorLensMemory.Enabled = false;
+                }
                 buttonProjectorPower.Enabled = true;
+            }
+        }
+        private void LabelProjectorPower_TextChanged(object sender, EventArgs e)
+        {
+            if (labelProjectorPower.Text == "On")
+            {
+                comboBoxProjectorLensMemory.Enabled = true;
+            }
+            else
+            {
+                comboBoxProjectorLensMemory.Enabled = false;
             }
         }
     }

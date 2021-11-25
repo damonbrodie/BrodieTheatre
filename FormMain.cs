@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.IO.Ports;
+using System.Collections.Generic;
 
 namespace BrodieTheatre
 {
@@ -35,6 +36,15 @@ namespace BrodieTheatre
         public bool debugHarmony = false;
         public bool debugKodi = false;
         public bool debugProjector = false;
+
+        public List<string> panasonic_pj_labels = new List<string>
+        {
+            "Lens Memory 1",
+            "Lens Memory 2",
+            "Lens Memory 3",
+            "Lens Memory 4",
+            "Lens Memory 5"
+        };
 
         public FormMain()
         {
@@ -125,14 +135,19 @@ namespace BrodieTheatre
             currentHarmonyIP = Properties.Settings.Default.harmonyHubIP;
             await HarmonyConnectAsync(true);
 
-            formMain.BeginInvoke(new Action(() =>
+            if (Properties.Settings.Default.lightingDelayProjectorOn > 0)
             {
-                if (Properties.Settings.Default.lightingDelayProjectorOn > 0)
+                formMain.BeginInvoke(new Action(() =>
                 {
                     formMain.timerStartLights.Interval = Properties.Settings.Default.lightingDelayProjectorOn * 1000;
-                }
+                }));
+            }
 
-            }));
+            foreach(string s in panasonic_pj_labels)
+            {
+                comboBoxProjectorLensMemory.Items.Add(s);
+            }
+            comboBoxProjectorLensMemory.SelectedIndex = 0;
         }
 
         private void TimerClearStatus_Tick(object sender, EventArgs e)
@@ -197,18 +212,6 @@ namespace BrodieTheatre
             {
                 Logging.writeLog("Occupancy:  Room vacant");
                 toolStripStatus.Text = "Room is now vacant";
-            }
-        }
-
-        private void LabelProjectorPower_TextChanged(object sender, EventArgs e)
-        {
-            if (labelProjectorPower.Text == "On")
-            {
-                buttonProjectorChangeAspect.Enabled = true;
-            }
-            else
-            {
-                buttonProjectorChangeAspect.Enabled = false;
             }
         }
 
