@@ -295,7 +295,7 @@ namespace BrodieTheatre
                             {
                                 int index = projectorGetLetMemoryFromAR(ar);
                                 projectorQueueChangeAspect(index);
-                                Logging.writeLog("Kodi:  Received Aspect Ratio: '" + kodiAspectRatio + "'");
+                                Logging.writeLog("Kodi:  Received Aspect Ratio: '" + kodiAspectRatio + ". lens memory index " + index.ToString());
                             }));
 
                         }

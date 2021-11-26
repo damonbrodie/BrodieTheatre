@@ -189,7 +189,7 @@ namespace BrodieTheatre
         {
 
             timerProjectorControl.Enabled = true;
-
+            comboBoxProjectorLensMemory.SelectedIndex = index;
             projectorLastCommand = "Lens";
             projectorSendCommand("Change zoom to: " + panasonic_pj_labels[index], panasonic_pj_codes[index]);
             projectorCommand.force = false;
@@ -225,25 +225,26 @@ namespace BrodieTheatre
             {
                 index = 0;
             }
-            compareLow = Decimal.Compare(decimalAspect, compareHigh);
+            compareLow = Decimal.Compare(decimalAspect, Properties.Settings.Default.projectorARRangeHigh1);
             compareHigh = Decimal.Compare(decimalAspect, Properties.Settings.Default.projectorARRangeHigh2);
             if (compareLow > 0 && compareHigh <= 0)
             {
                 index = 1;
+
             }
-            compareLow = Decimal.Compare(decimalAspect, compareHigh);
+            compareLow = Decimal.Compare(decimalAspect, Properties.Settings.Default.projectorARRangeHigh2);
             compareHigh = Decimal.Compare(decimalAspect, Properties.Settings.Default.projectorARRangeHigh3);
             if (compareLow > 0 && compareHigh <= 0)
             {
                 index = 2;
             }
-            compareLow = Decimal.Compare(decimalAspect, compareHigh);
+            compareLow = Decimal.Compare(decimalAspect, Properties.Settings.Default.projectorARRangeHigh3);
             compareHigh = Decimal.Compare(decimalAspect, Properties.Settings.Default.projectorARRangeHigh4);
             if (compareLow > 0 && compareHigh <= 0)
             {
                 index = 3;
             }
-            compareLow = Decimal.Compare(decimalAspect, compareHigh);
+            compareLow = Decimal.Compare(decimalAspect, Properties.Settings.Default.projectorARRangeHigh4);
             compareHigh = Decimal.Compare(decimalAspect, Properties.Settings.Default.projectorARRangeHigh5);
             if (compareLow > 0 && compareHigh <= 0)
             {
@@ -253,6 +254,7 @@ namespace BrodieTheatre
             {
                 Logging.writeLog("Projector:  Error - index out of range in projectorChangeAspect");
             }
+            Logging.writeLog("Projector:  Aspect Ratio " + decimalAspect.ToString() + " matches to index: " + index.ToString());
             return index;
             
         }

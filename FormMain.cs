@@ -34,7 +34,7 @@ namespace BrodieTheatre
 
         public bool debugInsteon = false;
         public bool debugHarmony = false;
-        public bool debugKodi = false;
+        public bool debugKodi = true;
         public bool debugProjector = false;
 
         public List<string> panasonic_pj_labels = new List<string>
