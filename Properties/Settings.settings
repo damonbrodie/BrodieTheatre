@@ -66,25 +66,25 @@
       <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="projectorARSetting1" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="projectorARSetting2" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">1</Value>
     </Setting>
     <Setting Name="projectorARSetting3" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">2</Value>
     </Setting>
     <Setting Name="projectorARSetting4" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">3</Value>
     </Setting>
     <Setting Name="projectorARSetting5" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">4</Value>
     </Setting>
     <Setting Name="projectorARRangeHigh1" Type="System.Decimal" Scope="User">
-      <Value Profile="(Default)">1.10</Value>
+      <Value Profile="(Default)">1.87</Value>
     </Setting>
     <Setting Name="projectorARRangeLow2" Type="System.String" Scope="User">
-      <Value Profile="(Default)">1.11</Value>
+      <Value Profile="(Default)">1.88</Value>
     </Setting>
     <Setting Name="projectorARRangeHigh2" Type="System.Decimal" Scope="User">
       <Value Profile="(Default)">2.00</Value>
@@ -93,16 +93,16 @@
       <Value Profile="(Default)">2.01</Value>
     </Setting>
     <Setting Name="projectorARRangeHigh3" Type="System.Decimal" Scope="User">
-      <Value Profile="(Default)">2.20</Value>
+      <Value Profile="(Default)">2.35</Value>
     </Setting>
     <Setting Name="projectorARRangeLow4" Type="System.String" Scope="User">
-      <Value Profile="(Default)">2.21</Value>
+      <Value Profile="(Default)">2.36</Value>
     </Setting>
     <Setting Name="projectorARRangeHigh4" Type="System.Decimal" Scope="User">
-      <Value Profile="(Default)">2.30</Value>
+      <Value Profile="(Default)">2.39</Value>
     </Setting>
     <Setting Name="projectorARRangeLow5" Type="System.String" Scope="User">
-      <Value Profile="(Default)">2.31</Value>
+      <Value Profile="(Default)">2.40</Value>
     </Setting>
     <Setting Name="projectorARRangeHigh5" Type="System.Decimal" Scope="User">
       <Value Profile="(Default)">3.00</Value>

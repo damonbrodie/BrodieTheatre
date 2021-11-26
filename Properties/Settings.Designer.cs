@@ -277,7 +277,7 @@ namespace BrodieTheatre.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
         public string projectorARSetting1 {
             get {
                 return ((string)(this["projectorARSetting1"]));
@@ -289,7 +289,7 @@ namespace BrodieTheatre.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
         public string projectorARSetting2 {
             get {
                 return ((string)(this["projectorARSetting2"]));
@@ -301,7 +301,7 @@ namespace BrodieTheatre.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("2")]
         public string projectorARSetting3 {
             get {
                 return ((string)(this["projectorARSetting3"]));
@@ -313,7 +313,7 @@ namespace BrodieTheatre.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("3")]
         public string projectorARSetting4 {
             get {
                 return ((string)(this["projectorARSetting4"]));
@@ -325,7 +325,7 @@ namespace BrodieTheatre.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("4")]
         public string projectorARSetting5 {
             get {
                 return ((string)(this["projectorARSetting5"]));
@@ -337,7 +337,7 @@ namespace BrodieTheatre.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("1.10")]
+        [global::System.Configuration.DefaultSettingValueAttribute("1.87")]
         public decimal projectorARRangeHigh1 {
             get {
                 return ((decimal)(this["projectorARRangeHigh1"]));
@@ -349,7 +349,7 @@ namespace BrodieTheatre.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("1.11")]
+        [global::System.Configuration.DefaultSettingValueAttribute("1.88")]
         public string projectorARRangeLow2 {
             get {
                 return ((string)(this["projectorARRangeLow2"]));
@@ -385,7 +385,7 @@ namespace BrodieTheatre.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("2.20")]
+        [global::System.Configuration.DefaultSettingValueAttribute("2.35")]
         public decimal projectorARRangeHigh3 {
             get {
                 return ((decimal)(this["projectorARRangeHigh3"]));
@@ -397,7 +397,7 @@ namespace BrodieTheatre.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("2.21")]
+        [global::System.Configuration.DefaultSettingValueAttribute("2.36")]
         public string projectorARRangeLow4 {
             get {
                 return ((string)(this["projectorARRangeLow4"]));
@@ -409,7 +409,7 @@ namespace BrodieTheatre.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("2.30")]
+        [global::System.Configuration.DefaultSettingValueAttribute("2.39")]
         public decimal projectorARRangeHigh4 {
             get {
                 return ((decimal)(this["projectorARRangeHigh4"]));
@@ -421,7 +421,7 @@ namespace BrodieTheatre.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("2.31")]
+        [global::System.Configuration.DefaultSettingValueAttribute("2.40")]
         public string projectorARRangeLow5 {
             get {
                 return ((string)(this["projectorARRangeLow5"]));
