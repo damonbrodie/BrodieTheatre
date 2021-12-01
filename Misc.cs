@@ -1,7 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Net;
-using System.Net.Sockets;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -26,38 +24,6 @@ namespace BrodieTheatre
                     }
                 }
                 catch { }
-            }
-        }
-    }
-
-    public class Network
-    {
-        public static string GetLocalIPAddress()
-        {
-            var host = Dns.GetHostEntry(Dns.GetHostName());
-            foreach (var ip in host.AddressList)
-            {
-                if (ip.AddressFamily == AddressFamily.InterNetwork)
-                {
-                    return ip.ToString();
-                }
-            }
-            return null;
-        }
-
-        public static bool IsPortListening(string ip, int port)
-        {
-            using (TcpClient tcpClient = new TcpClient())
-            {
-                try
-                {
-                    tcpClient.Connect(ip, port);
-                    return true;
-                }
-                catch (Exception)
-                {
-                    return false;
-                }
             }
         }
     }

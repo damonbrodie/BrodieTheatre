@@ -18,9 +18,9 @@ namespace BrodieTheatre
             public string powerCommand = null;
         }
 
-        public ProjectorLensChange projectorCommand = new ProjectorLensChange();
+        public ProjectorLensChange projectorCommand = new();
 
-        public List<string> panasonic_pj_codes = new List<string> 
+        public List<string> panasonic_pj_codes = new()
         {
             "VXX:LMLI0=+00000",
             "VXX:LMLI0=+00001",

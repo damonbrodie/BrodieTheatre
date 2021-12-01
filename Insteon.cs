@@ -17,7 +17,7 @@ namespace BrodieTheatre
 
         public int insteonProcessDimmerMessage(string message, string address)
         {
-            int level = -1;
+            int level;
             switch (message)
             {
                 case "Turn On":

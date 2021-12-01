@@ -149,7 +149,7 @@ namespace BrodieTheatre
                         }
                         else
                         {
-                            Activities item = new Activities
+                            Activities item = new()
                             {
                                 Id = activity.Id,
                                 Text = activity.Label

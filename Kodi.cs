@@ -37,7 +37,7 @@ namespace BrodieTheatre
                 try
                 {
                     kodiStatusDisconnect(false);
-                    tcpClient = new TcpClient();
+                    tcpClient = new();
                     tcpClient.ReceiveTimeout = 500;
                     // Localhost is hardcoded below.  If we want to support Kodi on a regular IP, then we should read the 
                     // Kodi Localhost flag here.
@@ -49,7 +49,7 @@ namespace BrodieTheatre
                         kodiStreamReader = new StreamReader(kodiSocketStream);
                         kodiStreamWriter = new StreamWriter(kodiSocketStream);
                         kodiSocketStream.Flush();
-                        Thread thread = new Thread(kodiReadStream);
+                        Thread thread = new (kodiReadStream);
                         thread.Start();
                         if (!kodiIsConnected) // Only write the log if we were previously disconnected
                         {
@@ -94,7 +94,7 @@ namespace BrodieTheatre
                     }
                     formMain.BeginInvoke(new Action(() =>
                     {
-                        formMain.kodiFindJson();
+                        kodiFindJson();
                     }));
                 }
                 catch
@@ -116,7 +116,7 @@ namespace BrodieTheatre
             }));
         }
 
-        public void kodiFindJson()
+        public static void kodiFindJson()
         {
             int braces = 0;
             bool inQ = false;
@@ -125,7 +125,7 @@ namespace BrodieTheatre
             int curPos = 0;
             int startPos = 0;
 
-            System.Text.StringBuilder sb = new System.Text.StringBuilder();
+            System.Text.StringBuilder sb = new();
 
             while (curPos < kodiReadBufferPos)
             {
@@ -346,7 +346,7 @@ namespace BrodieTheatre
             }));
         }
 
-        private void kodiPlaybackControl(string command, string media=null)
+        private static void kodiPlaybackControl(string command)
         {
             // It seems the Active Player is always "1".  Use this if we need to query it.
             //  "{\"jsonrpc\": \"2.0\", \"method\": \"Player.GetActivePlayers\", \"id\": \"1\"}"

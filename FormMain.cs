@@ -37,7 +37,7 @@ namespace BrodieTheatre
         public bool debugKodi = false;
         public bool debugProjector = false;
 
-        public List<string> panasonic_pj_labels = new List<string>
+        public List<string> panasonic_pj_labels = new()
         {
             "Lens Memory 1",
             "Lens Memory 2",

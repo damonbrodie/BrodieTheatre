@@ -42,7 +42,7 @@ namespace BrodieTheatre
             if (nCode >= 0 && wParam == (IntPtr)WM_KEYDOWN)
             {
                 int vkCode = Marshal.ReadInt32(lParam);
-                KeysConverter kc = new KeysConverter();
+                KeysConverter kc = new();
                 string keyCode = kc.ConvertToString(vkCode);
                 switch (keyCode)
                 {

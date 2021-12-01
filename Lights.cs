@@ -7,7 +7,7 @@ namespace BrodieTheatre
 {
     public partial class FormMain : Form
     {
-        Dictionary<string, int> lights = new Dictionary<string, int>();
+        Dictionary<string, int> lights = new();
 
         private void trackBarTray_ValueChanged(object sender, EventArgs e)
         {
@@ -57,7 +57,7 @@ namespace BrodieTheatre
             lightsToStoppedLevel();
         }
 
-        private bool areLightsOff()
+        private static bool areLightsOff()
         {
             if (formMain.trackBarPots.Value == 0 && formMain.trackBarTray.Value == 0)
             {
