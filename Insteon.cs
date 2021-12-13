@@ -103,16 +103,29 @@ namespace BrodieTheatre
             {
                 plmConnected = false;
                 labelPLMstatus.Text = "Disconnected";
-                Logging.writeLog("Insteon:  Connecting Serial Port " + Properties.Settings.Default.plmPort + " to PLM");
+                formMain.BeginInvoke(new Action(() =>
+                {
+                    Logging.writeLog("Insteon:  Connecting Serial Port " + Properties.Settings.Default.plmPort + " to PLM");
+                }));
                 labelPLMstatus.ForeColor = System.Drawing.Color.Maroon;
 
                 powerlineModem = new Plm(Properties.Settings.Default.plmPort);
-                powerlineModem.Network.StandardMessageReceived += Network_StandardMessageReceived;
+                if (powerlineModem != null)
+                {
+                    powerlineModem.Network.StandardMessageReceived += Network_StandardMessageReceived;
 
-                timerPLMreceive.Enabled = true;
-                queueLightLevel(Properties.Settings.Default.potsAddress, 0);
-                queueLightLevel(Properties.Settings.Default.trayAddress, 0);
-                timerCheckPLM.Enabled = true;
+                    timerPLMreceive.Enabled = true;
+                    queueLightLevel(Properties.Settings.Default.potsAddress, 0);
+                    queueLightLevel(Properties.Settings.Default.trayAddress, 0);
+                    timerCheckPLM.Enabled = true;
+                }
+                else
+                {
+                    formMain.BeginInvoke(new Action(() =>
+                    {
+                        Logging.writeLog("Insteon:  Error connecting to PLM on Serial Port " + Properties.Settings.Default.plmPort);
+                    }));
+                }
             }
         }
 
@@ -437,6 +450,15 @@ namespace BrodieTheatre
             {
                 toolStripStatus.Text = "Polling for Insteon status";
                 insteonPoll();
+            }
+            else
+            {
+                formMain.BeginInvoke(new Action(() =>
+                {
+                    Logging.writeLog("Insteon:  Timer Poll - PLM Disconnected.  Reconnecting");
+                }));
+
+                insteonConnectPLM();
             }
         }
     }
