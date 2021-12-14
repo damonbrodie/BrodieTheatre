@@ -97,11 +97,12 @@ namespace BrodieTheatre
             powerlineModem.Receive();
         }
 
-        private void insteonConnectPLM()
+        private async void insteonConnectPLM()
         {
             if (Properties.Settings.Default.plmPort != string.Empty)
             {
                 plmConnected = false;
+                timerPLMreceive.Enabled = false;
                 labelPLMstatus.Text = "Disconnected";
                 formMain.BeginInvoke(new Action(() =>
                 {
@@ -117,7 +118,17 @@ namespace BrodieTheatre
                     timerPLMreceive.Enabled = true;
                     queueLightLevel(Properties.Settings.Default.potsAddress, 0);
                     queueLightLevel(Properties.Settings.Default.trayAddress, 0);
-                    timerCheckPLM.Enabled = true;
+                    formMain.BeginInvoke(new Action(() =>
+                    {
+                        Logging.writeLog("Insteon:  Connected to PLM");
+                    }));
+                    await doDelay(2000);
+                    plmConnected = true;
+                    formMain.BeginInvoke(new Action(() =>
+                    {
+                        formMain.insteonPoll();
+                    }));
+
                 }
                 else
                 {
@@ -351,23 +362,17 @@ namespace BrodieTheatre
                 formMain.BeginInvoke(new Action(() =>
                 {
                     labelPLMstatus.Text = "Disconnected";
-                    Logging.writeLog("Insteon:  Error connecting to PLM");
+                    Logging.writeLog("Insteon:  Connection Error to PLM");
                     labelPLMstatus.ForeColor = System.Drawing.Color.Maroon;
                     timerPLMreceive.Enabled = false;
-                    timerCheckPLM.Enabled = true;
+                    insteonConnectPLM();
                 }));
             }
         }
 
-        private void timerCheckPLM_Tick(object sender, EventArgs e)
-        {
-            plmConnected = true;
-            timerCheckPLM.Enabled = false;
-            formMain.insteonPoll();
-        }
-
         private void timerInsteonMotionLatch_Tick(object sender, EventArgs e)
         {
+            // Wnen enabled fires every second checks to see if motion expies
             if (insteonMotionLatchActive)
             {
                 if (labelKodiPlaybackStatus.Text == "Stopped")
@@ -446,6 +451,7 @@ namespace BrodieTheatre
 
         private void timerInsteonPoll_Tick(object sender, EventArgs e)
         {
+            // Fires every minute - Reconnects if needed, or polls for light status
             if (labelPLMstatus.Text == "Connected")
             {
                 toolStripStatus.Text = "Polling for Insteon status";

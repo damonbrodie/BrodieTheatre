@@ -64,6 +64,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.comboBoxProjectorLensMemory = new System.Windows.Forms.ComboBox();
             this.buttonProjectorPower = new System.Windows.Forms.Button();
             this.labelProjectorPower = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
@@ -74,7 +75,6 @@
             this.timerPLMreceive = new System.Windows.Forms.Timer(this.components);
             this.timerTrayTrack = new System.Windows.Forms.Timer(this.components);
             this.timerPotTrack = new System.Windows.Forms.Timer(this.components);
-            this.timerCheckPLM = new System.Windows.Forms.Timer(this.components);
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -96,7 +96,6 @@
             this.timerInsteonPoll = new System.Windows.Forms.Timer(this.components);
             this.timerHarmonyPoll = new System.Windows.Forms.Timer(this.components);
             this.timerShutdown = new System.Windows.Forms.Timer(this.components);
-            this.comboBoxProjectorLensMemory = new System.Windows.Forms.ComboBox();
             this.menuStrip.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -496,6 +495,15 @@
             this.groupBox4.TabIndex = 10;
             this.groupBox4.TabStop = false;
             // 
+            // comboBoxProjectorLensMemory
+            // 
+            this.comboBoxProjectorLensMemory.FormattingEnabled = true;
+            this.comboBoxProjectorLensMemory.Location = new System.Drawing.Point(169, 191);
+            this.comboBoxProjectorLensMemory.Name = "comboBoxProjectorLensMemory";
+            this.comboBoxProjectorLensMemory.Size = new System.Drawing.Size(201, 33);
+            this.comboBoxProjectorLensMemory.TabIndex = 24;
+            this.comboBoxProjectorLensMemory.SelectedIndexChanged += new System.EventHandler(this.comboBoxProjectorLensMemory_SelectedIndexChanged);
+            // 
             // buttonProjectorPower
             // 
             this.buttonProjectorPower.Enabled = false;
@@ -586,11 +594,6 @@
             // timerPotTrack
             // 
             this.timerPotTrack.Tick += new System.EventHandler(this.timerPotTrack_Tick);
-            // 
-            // timerCheckPLM
-            // 
-            this.timerCheckPLM.Interval = 2000;
-            this.timerCheckPLM.Tick += new System.EventHandler(this.timerCheckPLM_Tick);
             // 
             // statusStrip
             // 
@@ -753,15 +756,6 @@
             this.timerShutdown.Interval = 1000;
             this.timerShutdown.Tick += new System.EventHandler(this.timerShutdown_Tick);
             // 
-            // comboBoxProjectorLensMemory
-            // 
-            this.comboBoxProjectorLensMemory.FormattingEnabled = true;
-            this.comboBoxProjectorLensMemory.Location = new System.Drawing.Point(169, 191);
-            this.comboBoxProjectorLensMemory.Name = "comboBoxProjectorLensMemory";
-            this.comboBoxProjectorLensMemory.Size = new System.Drawing.Size(201, 33);
-            this.comboBoxProjectorLensMemory.TabIndex = 24;
-            this.comboBoxProjectorLensMemory.SelectedIndexChanged += new System.EventHandler(this.comboBoxProjectorLensMemory_SelectedIndexChanged);
-            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
@@ -844,7 +838,6 @@
         private System.Windows.Forms.Timer timerPLMreceive;
         private System.Windows.Forms.Timer timerTrayTrack;
         private System.Windows.Forms.Timer timerPotTrack;
-        private System.Windows.Forms.Timer timerCheckPLM;
         private System.Windows.Forms.StatusStrip statusStrip;
         private System.Windows.Forms.Timer timerClearStatus;
         private System.Windows.Forms.Timer timerStartLights;
