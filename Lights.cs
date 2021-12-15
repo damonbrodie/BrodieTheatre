@@ -128,14 +128,16 @@ namespace BrodieTheatre
 
         private void timerSetLights_Tick(object sender, EventArgs e)
         {
-
-            if (Properties.Settings.Default.potsAddress != string.Empty && lights.ContainsKey(Properties.Settings.Default.potsAddress) && lights[Properties.Settings.Default.potsAddress] != -1)
+            if (labelPLMstatus.Text == "Connected")
             {
-                insteonSetLightLevel(Properties.Settings.Default.potsAddress, lights[Properties.Settings.Default.potsAddress]);
-            }
-            else if (Properties.Settings.Default.trayAddress != string.Empty && lights.ContainsKey(Properties.Settings.Default.trayAddress) && lights[Properties.Settings.Default.trayAddress] != -1)
-            {
-                insteonSetLightLevel(Properties.Settings.Default.trayAddress, lights[Properties.Settings.Default.trayAddress]);
+                if (Properties.Settings.Default.potsAddress != string.Empty && lights.ContainsKey(Properties.Settings.Default.potsAddress) && lights[Properties.Settings.Default.potsAddress] != -1)
+                {
+                    insteonSetLightLevel(Properties.Settings.Default.potsAddress, lights[Properties.Settings.Default.potsAddress]);
+                }
+                else if (Properties.Settings.Default.trayAddress != string.Empty && lights.ContainsKey(Properties.Settings.Default.trayAddress) && lights[Properties.Settings.Default.trayAddress] != -1)
+                {
+                    insteonSetLightLevel(Properties.Settings.Default.trayAddress, lights[Properties.Settings.Default.trayAddress]);
+                }
             }
         }
 
@@ -143,6 +145,14 @@ namespace BrodieTheatre
         {
             Logging.writeLog("Lighting:  Queuing light '" + address + "' to level '" + level.ToString() + "'");
             lights[address] = level;
+        }
+
+        public void clearLightQueue()
+        {
+            foreach (string key in lights.Keys)
+            {
+                lights[key] = -1;
+            }
         }
     }
 }

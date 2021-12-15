@@ -101,6 +101,7 @@ namespace BrodieTheatre
         {
             if (Properties.Settings.Default.plmPort != string.Empty)
             {
+                clearLightQueue();
                 plmConnected = false;
                 timerPLMreceive.Enabled = false;
                 labelPLMstatus.Text = "Disconnected";
@@ -303,10 +304,12 @@ namespace BrodieTheatre
                     finished = lightingControl.RampOn((byte)toInt);
                     if (!finished)
                     {
+                        // Failed
                         Logging.writeLog("Insteon:  Could not set light '" + address + "' to level '" + level.ToString() + "'");
                     }
                     else
                     {
+                        // Success
                         lights[address] = -1;
                         Logging.writeLog("Insteon:  Set light '" + address + "' to level '" + level.ToString() + "'");
                         return;
@@ -316,6 +319,7 @@ namespace BrodieTheatre
             }
             toolStripStatus.Text = "Could not connect to light '" + address + "'";
             Logging.writeLog("Insteon:  Error setting light '" + address + "' to level '" + level.ToString() + "'");
+            lights[address] = -1;
         }
 
         public void insteonSetRelay(string address, bool turnOn)
