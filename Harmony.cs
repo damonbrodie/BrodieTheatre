@@ -335,7 +335,10 @@ namespace BrodieTheatre
                     formMain.BeginInvoke(new Action(() =>
                     {
                         Logging.writeLog("Harmony:  Error Polling Hub");
-                        Logging.writeLog("Harmony:  " + ex.ToString());
+                        if (debugHarmony)
+                        {
+                            Logging.writeLog("Harmony:  " + ex.ToString());
+                        }
                     }));
                     HarmonyDispose();
                     error = true;
