@@ -8,7 +8,35 @@ namespace BrodieTheatre
     public partial class FormMain : Form
     {
         Dictionary<string, int> lights = new();
+        DateTime lightShutdown = DateTime.Now.AddMinutes(Properties.Settings.Default.lightingShutdownMinutes); 
 
+        private void timerShutdownLights_Tick(object sender, EventArgs e)
+        {
+            // If the projector is off and the room isn't occupied then turn the lights off after two hours.
+            if (trackBarPots.Value > 0 || trackBarTray.Value > 0)
+            {
+                if (labelProjectorPower.Text == "On" || labelRoomOccupancy.Text == "Occupied")
+                {
+                    resetLightShutdownTimer();
+                }
+                else
+                {
+                    if (lightShutdown < DateTime.Now)
+                    {
+                        Logging.writeLog("Lights:  Light timer expired - turn off lights");
+                        lightsOff();
+                    }
+                }
+            }
+            else
+            {
+                resetLightShutdownTimer();
+            }
+        }
+        private void resetLightShutdownTimer()
+        {
+            lightShutdown = DateTime.Now.AddMinutes(Properties.Settings.Default.lightingShutdownMinutes);
+        }
         private void trackBarTray_ValueChanged(object sender, EventArgs e)
         {
             labelTray.Text = (trackBarTray.Value * 10).ToString() + "%";

@@ -96,6 +96,7 @@
             this.timerInsteonPoll = new System.Windows.Forms.Timer(this.components);
             this.timerHarmonyPoll = new System.Windows.Forms.Timer(this.components);
             this.timerShutdown = new System.Windows.Forms.Timer(this.components);
+            this.timerShutdownLights = new System.Windows.Forms.Timer(this.components);
             this.menuStrip.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -756,6 +757,12 @@
             this.timerShutdown.Interval = 1000;
             this.timerShutdown.Tick += new System.EventHandler(this.timerShutdown_Tick);
             // 
+            // timerShutdownLights
+            // 
+            this.timerShutdownLights.Enabled = true;
+            this.timerShutdownLights.Interval = 60000;
+            this.timerShutdownLights.Tick += new System.EventHandler(this.timerShutdownLights_Tick);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
@@ -872,5 +879,6 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Timer timerShutdown;
         private System.Windows.Forms.ComboBox comboBoxProjectorLensMemory;
+        private System.Windows.Forms.Timer timerShutdownLights;
     }
 }

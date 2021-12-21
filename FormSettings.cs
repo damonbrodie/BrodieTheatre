@@ -57,7 +57,7 @@ namespace BrodieTheatre
             Properties.Settings.Default.connectKodiLocalhost        = checkBoxConnectKodiLocalhost.Checked;
             Properties.Settings.Default.insteonMotionLatch          = trackBarInsteonMotionMinimumTime.Value;
             Properties.Settings.Default.lightingDelayProjectorOn    = trackBarDelayLightingProjectorStart.Value;
-            Properties.Settings.Default.shutdownLatch               = trackBarShutdown.Value;
+            Properties.Settings.Default.shutdownLatch               = trackBarShutdownProjector.Value;
             Properties.Settings.Default.projectorARSetting1         = comboBoxUsePJ1.Text;
             Properties.Settings.Default.projectorARSetting2         = comboBoxUsePJ2.Text;
             Properties.Settings.Default.projectorARSetting3         = comboBoxUsePJ3.Text;
@@ -72,6 +72,7 @@ namespace BrodieTheatre
             Properties.Settings.Default.projectorARRangeLow3        = labelAR3From.Text;
             Properties.Settings.Default.projectorARRangeLow4        = labelAR4From.Text;
             Properties.Settings.Default.projectorARRangeLow5        = labelAR5From.Text;
+            Properties.Settings.Default.lightingShutdownMinutes     = trackBarShutdownLights.Value;
 
             if (checkBoxStartWithWindows.Checked)
             {
@@ -127,13 +128,25 @@ namespace BrodieTheatre
 
             try
             {
-                trackBarShutdown.Value = Properties.Settings.Default.shutdownLatch;
+                trackBarShutdownProjector.Value = Properties.Settings.Default.shutdownLatch;
             }
             catch (Exception ex)
             {
                 if (ex is ArgumentOutOfRangeException)
                 {
-                    trackBarShutdown.Value = trackBarShutdown.Minimum;
+                    trackBarShutdownProjector.Value = trackBarShutdownProjector.Minimum;
+                }
+            }
+
+            try
+            {
+                trackBarShutdownLights.Value = Properties.Settings.Default.lightingShutdownMinutes;
+            }
+            catch(Exception ex)
+            {
+                if (ex is ArgumentOutOfRangeException)
+                {
+                    trackBarShutdownLights.Value = trackBarShutdownLights.Minimum;
                 }
             }
 
@@ -302,6 +315,10 @@ namespace BrodieTheatre
             }
         }
 
+        private void trackBarShutdownLights_ValueChanged(object sender, EventArgs e)
+        {
+            labelShutdownLightsMinutes.Text = trackBarShutdownLights.Value.ToString();
+        }
         private void trackBarTrayPlayback_ValueChanged(object sender, EventArgs e)
         {           
             labelTrayPlayback.Text = (trackBarTrayPlayback.Value * 10).ToString() + "%";
@@ -361,7 +378,7 @@ namespace BrodieTheatre
 
         private void trackBarShutdown_ValueChanged(object sender, EventArgs e)
         {
-            labelShutdownMinutes.Text = trackBarShutdown.Value.ToString();
+            labelShutdownProjectorMinutes.Text = trackBarShutdownProjector.Value.ToString();
         }
 
         private void checkBoxConnectKodiLocalhost_CheckedChanged(object sender, EventArgs e)

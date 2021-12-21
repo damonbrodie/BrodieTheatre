@@ -442,5 +442,17 @@ namespace BrodieTheatre.Properties {
                 this["projectorARRangeHigh5"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("120")]
+        public int lightingShutdownMinutes {
+            get {
+                return ((int)(this["lightingShutdownMinutes"]));
+            }
+            set {
+                this["lightingShutdownMinutes"] = value;
+            }
+        }
     }
 }
