@@ -72,6 +72,7 @@ namespace BrodieTheatre
 
         private async void SettingsToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            int oldLightTimerMinutes = Properties.Settings.Default.lightingShutdownMinutes;
             Form formSettings = new FormSettings();
             formSettings.ShowDialog();
 
@@ -102,7 +103,21 @@ namespace BrodieTheatre
 
             if (Properties.Settings.Default.projectorPort != currentProjectorPort)
             {
-                projectorConnect();
+                formMain.BeginInvoke(new Action(() =>
+                {
+                    projectorConnect();
+                    resetLightShutdownTimer();
+                }));
+            }
+
+            if (oldLightTimerMinutes != Properties.Settings.Default.lightingShutdownMinutes)
+            {
+                formMain.BeginInvoke(new Action(() =>
+                {
+                    Logging.writeLog("Lighting:  Light shutdown timer changed - resetting with new value");
+                    resetLightShutdownTimer();
+                }));
+
             }
         }
 

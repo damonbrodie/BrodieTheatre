@@ -23,7 +23,7 @@ namespace BrodieTheatre
                 {
                     if (lightShutdown < DateTime.Now)
                     {
-                        Logging.writeLog("Lights:  Light timer expired - turn off lights");
+                        Logging.writeLog("Lighting:  Light timer expired - turn off lights");
                         lightsOff();
                     }
                 }
