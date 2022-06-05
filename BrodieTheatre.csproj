@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net6.0-windows</TargetFramework>
+    <TargetFramework>net6.0-windows7.0</TargetFramework>
     <OutputType>WinExe</OutputType>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>/publish/</PublishUrl>
@@ -79,7 +79,7 @@
       <Version>2013.7.9</Version>
     </PackageReference>
     <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
-    <PackageReference Include="Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers" Version="0.3.255803">
+    <PackageReference Include="Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers" Version="0.3.326103">
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.Windows.Compatibility" Version="6.0.0" />

@@ -18,7 +18,7 @@
       <Value Profile="(Default)">42.20.F8</Value>
     </Setting>
     <Setting Name="plmPort" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">COM1</Value>
     </Setting>
     <Setting Name="trayPausedLevel" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">6</Value>
@@ -36,7 +36,7 @@
       <Value Profile="(Default)">10</Value>
     </Setting>
     <Setting Name="projectorPort" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">COM3</Value>
     </Setting>
     <Setting Name="motionSensorAddress" Type="System.String" Scope="User">
       <Value Profile="(Default)">41.66.88</Value>
