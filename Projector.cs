@@ -93,11 +93,15 @@ namespace BrodieTheatre
             string full_command = start + command + end;
             if (serialPortProjector.IsOpen)
             {
-                if (logMessage != "" && debugProjector)
+                if (logMessage != "") // Don't log some commands like CheckPower
                 {
-                    Logging.writeLog("Projector:  " + logMessage);
+                    Logging.writeLog("Projector:  SendCommand - " + logMessage);
                 }
                 serialPortProjector.Write(full_command);
+            }
+            else
+            {
+                Logging.writeLog("Projector:  Serial Port not open - Cannot SendCommand:  " + logMessage);
             }
         }
 
@@ -281,9 +285,11 @@ namespace BrodieTheatre
                 projectorCommand.force = false;
                 comboBoxProjectorLensMemory.Enabled = true;
             }
+            // Check to make sure a new command wasn't queued
             if (projectorCommand.powerCommand == null && projectorCommand.newLensMemory < 0)
             {
                 timerProjectorControl.Enabled = false;
+
             }
         }
 
@@ -305,6 +311,7 @@ namespace BrodieTheatre
             }
             else
             {
+                Logging.writeLog("Projector:  Powering On");
                 projectorSendCommand("Power On", "PON");     
                 timerProjectorControl.Enabled = true;
             }
@@ -313,7 +320,8 @@ namespace BrodieTheatre
         private void projectorPowerOff()
         {
             if (labelProjectorPower.Text == "Off" || labelProjectorPower.Text == "Powering Off")
-            { 
+            {
+                Logging.writeLog("Projector:  Projector already off - no action");
                 return;
             }
             labelProjectorPower.Text = "Powering Off";
@@ -325,6 +333,7 @@ namespace BrodieTheatre
             }
             else
             {
+                Logging.writeLog("Projector:  Powering Off");
                 projectorSendCommand("Power Off", "POF");
                 timerProjectorControl.Enabled = true;
             }           
