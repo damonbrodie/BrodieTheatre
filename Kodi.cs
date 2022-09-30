@@ -192,7 +192,11 @@ namespace BrodieTheatre
                 }));
                 return;
             }
-            if (result.ContainsKey("id") && result["id"] == "98")
+            if (result.ContainsKey("id") && result["id"] == "987")
+            {
+                // Return Library Scan.  Process no further.
+            }
+            else if (result.ContainsKey("id") && result["id"] == "98")
             {
                 // Return after showing transparent screen image.  Process no further.
             }
@@ -368,6 +372,12 @@ namespace BrodieTheatre
         {
             kodiSendJson("{\"jsonrpc\": \"2.0\", \"method\": \"Player.Open\", \"params\": { \"item\": {\"file\": \"" + kodiBehindScreen + "\" }}, \"id\": \"98\"}");
             Logging.writeLog("Kodi:  Showing behind the screen picture");
+        }
+
+        private void kodiLibraryScan()
+        {
+            kodiSendJson("{\"jsonrpc\": \"2.0\", \"method\": \"VideoLibrary.Scan\"}, \"id\": \"97\"}");
+            Logging.writeLog("Kodi:  Initiate Video Library Scan");
         }
 
         private void timerKodiConnect_Tick(object sender, EventArgs e)

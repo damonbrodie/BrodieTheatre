@@ -103,6 +103,7 @@ namespace BrodieTheatre
                     formMain.projectorPowerOn();
                     formMain.setDelayedLightTimer();
                     formMain.startShutdownTimer();
+                    formMain.kodiLibraryScan();
                 }));
             }
         }
