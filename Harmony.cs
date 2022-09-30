@@ -144,6 +144,7 @@ namespace BrodieTheatre
                                 {
                                     Logging.writeLog("Harmony:  Activity enabled - Powering on projector");
                                     formMain.projectorPowerOn();
+                                    formMain.kodiLibraryScan();
                                     formMain.setDelayedLightTimer();
                                 }));
                             }

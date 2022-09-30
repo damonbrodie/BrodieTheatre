@@ -12,6 +12,7 @@ using System.Collections.Generic;
   
    99 - GetPlayer
    98 - Show Image of behind projector
+   97 - VideoLibrary.Scan
   
 */
 
@@ -376,8 +377,22 @@ namespace BrodieTheatre
 
         private void kodiLibraryScan()
         {
-            kodiSendJson("{\"jsonrpc\": \"2.0\", \"method\": \"VideoLibrary.Scan\"}, \"id\": \"97\"}");
-            Logging.writeLog("Kodi:  Initiate Video Library Scan");
+            if (formMain.labelKodiStatus.Text == "Connected")
+            {
+                if (formMain.labelKodiPlaybackStatus.Text == "Stopped")
+                {
+                    kodiSendJson("{\"jsonrpc\": \"2.0\", \"method\": \"VideoLibrary.Scan\"}, \"id\": \"97\"}");
+                    Logging.writeLog("Kodi:  Initiate Video Library Scan");
+                }
+                else
+                {
+                    Logging.writeLog("Kodi:  Unable to start Video Library Scan - Playback underway");
+                }
+            }
+            else
+            {
+                Logging.writeLog("Kodi:  Unable to start Video Library Scan - Kodi not Connected");
+            }
         }
 
         private void timerKodiConnect_Tick(object sender, EventArgs e)
