@@ -193,7 +193,7 @@ namespace BrodieTheatre
                 }));
                 return;
             }
-            if (result.ContainsKey("id") && result["id"] == "987")
+            if (result.ContainsKey("id") && result["id"] == "97")
             {
                 // Return Library Scan.  Process no further.
             }

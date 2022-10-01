@@ -57,7 +57,7 @@ namespace BrodieTheatre
             {
                 formMain.BeginInvoke(new Action(() =>
                 {
-                Logging.writeLog("Harmony:  Cannot connect to Harmony Hub");
+                    Logging.writeLog("Harmony:  Cannot connect to Harmony Hub");
                 }));
                 return;
             }
@@ -245,6 +245,7 @@ namespace BrodieTheatre
                         formMain.BeginInvoke(new Action(() =>
                         {
                             formMain.projectorPowerOn();
+                            formMain.kodiLibraryScan();
 
                             if (forceLights)
                             {
