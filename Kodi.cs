@@ -309,10 +309,10 @@ namespace BrodieTheatre
             }
             else
             {
-                    formMain.BeginInvoke(new Action(() =>
-                    {
-                        Logging.writeLog("Kodi:  Received unknown JSON:  " + jsonText);
-                    }));
+                formMain.BeginInvoke(new Action(() =>
+                {
+                    Logging.writeLog("Kodi:  Received unknown JSON:  " + jsonText);
+                }));
             }
         }
 
@@ -349,24 +349,6 @@ namespace BrodieTheatre
                 formMain.labelKodiStatus.ForeColor = System.Drawing.Color.Maroon;
                 formMain.timerKodiConnect.Enabled = enableTimer;
             }));
-        }
-
-        private static void kodiPlaybackControl(string command)
-        {
-            // It seems the Active Player is always "1".  Use this if we need to query it.
-            //  "{\"jsonrpc\": \"2.0\", \"method\": \"Player.GetActivePlayers\", \"id\": \"1\"}"
-            switch (command)
-            {
-                case "Pause":
-                    kodiSendJson("{\"jsonrpc\": \"2.0\", \"method\": \"Player.PlayPause\", \"params\": { \"playerid\" : 1 }, \"id\": \"1\"}");
-                    break;
-                case "Play":
-                    kodiSendJson("{\"jsonrpc\": \"2.0\", \"method\": \"Player.PlayPause\", \"params\": { \"playerid\" : 1 }, \"id\": \"1\"}");
-                    break;
-                case "Stop":
-                    kodiSendJson("{\"jsonrpc\": \"2.0\", \"method\": \"Player.Stop\", \"params\": { \"playerid\" : 1 }, \"id\": \"1\"}");
-                    break;
-            }
         }
 
         public static void kodiShowBehindScreen()

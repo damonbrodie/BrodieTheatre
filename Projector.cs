@@ -96,6 +96,8 @@ namespace BrodieTheatre
                 if (logMessage != "") // Don't log some commands like CheckPower
                 {
                     Logging.writeLog("Projector:  SendCommand - " + logMessage);
+                    timerProjectorControl.Enabled = true;
+                    Logging.writeLog("Projector:  Projector Queue Timer enabled");
                 }
                 serialPortProjector.Write(full_command);
             }
@@ -191,8 +193,6 @@ namespace BrodieTheatre
 
         private void projectorChangeAspect(int index, bool force=false)
         {
-
-            timerProjectorControl.Enabled = true;
             comboBoxProjectorLensMemory.SelectedIndex = index;
             projectorLastCommand = "Lens";
             projectorSendCommand("Change zoom to: " + panasonic_pj_labels[index], panasonic_pj_codes[index]);
@@ -259,8 +259,7 @@ namespace BrodieTheatre
                 Logging.writeLog("Projector:  Error - index out of range in projectorChangeAspect");
             }
             Logging.writeLog("Projector:  Aspect Ratio " + decimalAspect.ToString() + " matches to index: " + index.ToString());
-            return index;
-            
+            return index;   
         }
 
         private void timerProjectorControl_Tick(object sender, EventArgs e)
@@ -269,10 +268,12 @@ namespace BrodieTheatre
             {
                 if (projectorCommand.powerCommand == "001")
                 {
+                    Logging.writeLog("Projector:  Queued Command - Power On");
                     projectorSendCommand("Power On", "PON");                   
                 }
                 else if (projectorCommand.powerCommand == "000")
                 {
+                    Logging.writeLog("Projector:  Queued Command - Power Off");
                     projectorSendCommand("Power Off", "POF");
                 }
                 projectorCommand.powerCommand = null;
@@ -280,6 +281,7 @@ namespace BrodieTheatre
             else if (projectorCommand.newLensMemory >= 0)
             {
                 // A queued projector lens aspect ratio change is waiting
+                Logging.writeLog("Projector:  Queued Command - Change Aspect Ratio");
                 projectorChangeAspect(projectorCommand.newLensMemory, projectorCommand.force);
                 projectorCommand.newLensMemory = -1;
                 projectorCommand.force = false;
@@ -288,8 +290,8 @@ namespace BrodieTheatre
             // Check to make sure a new command wasn't queued
             if (projectorCommand.powerCommand == null && projectorCommand.newLensMemory < 0)
             {
+                Logging.writeLog("Projector:  End of queued commands");
                 timerProjectorControl.Enabled = false;
-
             }
         }
 
@@ -313,7 +315,6 @@ namespace BrodieTheatre
             {
                 Logging.writeLog("Projector:  Powering On");
                 projectorSendCommand("Power On", "PON");     
-                timerProjectorControl.Enabled = true;
             }
         }
 
@@ -335,7 +336,6 @@ namespace BrodieTheatre
             {
                 Logging.writeLog("Projector:  Powering Off");
                 projectorSendCommand("Power Off", "POF");
-                timerProjectorControl.Enabled = true;
             }           
         }
 
