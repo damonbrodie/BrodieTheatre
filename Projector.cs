@@ -93,13 +93,20 @@ namespace BrodieTheatre
             string full_command = start + command + end;
             if (serialPortProjector.IsOpen)
             {
-                if (logMessage != "") // Don't log some commands like CheckPower
+                if (timerProjectorControl.Enabled == true)
                 {
-                    Logging.writeLog("Projector:  SendCommand - " + logMessage);
-                    timerProjectorControl.Enabled = true;
-                    Logging.writeLog("Projector:  Projector Queue Timer enabled");
+                    Logging.writeLog("Projector:  Error - Cannot SendCommand - Queue Timer is running");
                 }
-                serialPortProjector.Write(full_command);
+                else
+                {
+                    if (logMessage != "") // Don't log some commands like CheckPower
+                    {
+                        Logging.writeLog("Projector:  SendCommand - " + logMessage);
+                        timerProjectorControl.Enabled = true;
+                        Logging.writeLog("Projector:  Projector Queue Timer enabled");
+                    }
+                    serialPortProjector.Write(full_command);
+                }
             }
             else
             {
