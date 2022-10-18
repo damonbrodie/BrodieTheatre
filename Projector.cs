@@ -92,21 +92,14 @@ namespace BrodieTheatre
 
             string full_command = start + command + end;
             if (serialPortProjector.IsOpen)
-            {
-                if (timerProjectorControl.Enabled == true)
+            {    
+                if (logMessage != "") // Don't log some commands like CheckPower
                 {
-                    Logging.writeLog("Projector:  Error - Cannot SendCommand - Queue Timer is running");
+                    Logging.writeLog("Projector:  SendCommand - " + logMessage);
+                    timerProjectorControl.Enabled = true;
+                    Logging.writeLog("Projector:  Projector Queue Timer enabled");
                 }
-                else
-                {
-                    if (logMessage != "") // Don't log some commands like CheckPower
-                    {
-                        Logging.writeLog("Projector:  SendCommand - " + logMessage);
-                        timerProjectorControl.Enabled = true;
-                        Logging.writeLog("Projector:  Projector Queue Timer enabled");
-                    }
-                    serialPortProjector.Write(full_command);
-                }
+                serialPortProjector.Write(full_command);          
             }
             else
             {
@@ -192,7 +185,7 @@ namespace BrodieTheatre
 
         private void timerCheckProjector_Tick(object sender, EventArgs e)
         {
-            if (labelProjectorStatus.Text == "Connected")
+            if (labelProjectorStatus.Text == "Connected" && timerProjectorControl.Enabled == false)
             {
                 projectorCheckPower();
             }
@@ -297,7 +290,7 @@ namespace BrodieTheatre
             // Check to make sure a new command wasn't queued
             if (projectorCommand.powerCommand == null && projectorCommand.newLensMemory < 0)
             {
-                Logging.writeLog("Projector:  End of queued commands");
+                Logging.writeLog("Projector:  End of queued commands, disabling Queue Timer");
                 timerProjectorControl.Enabled = false;
             }
         }
@@ -310,9 +303,7 @@ namespace BrodieTheatre
             }
             
             labelProjectorPower.Text = "Powering On";
-            // Set the Projector to the current AR in the UI to ensure we are in sync.
-            projectorCommand.newLensMemory = 0;
-            projectorCommand.force = true;
+
             if (timerProjectorControl.Enabled == true)
             {
                 Logging.writeLog("Projector:  Queueing Powering On");
@@ -323,6 +314,10 @@ namespace BrodieTheatre
                 Logging.writeLog("Projector:  Powering On");
                 projectorSendCommand("Power On", "PON");     
             }
+
+            // Set the Projector to the current AR in the UI to ensure we are in sync.
+            projectorCommand.newLensMemory = 0;
+            projectorCommand.force = true;
         }
 
         private void projectorPowerOff()
@@ -336,8 +331,8 @@ namespace BrodieTheatre
             
             if (timerProjectorControl.Enabled == true)
             {
-                Logging.writeLog("Projector:  Queueing Powering Off");
                 projectorCommand.powerCommand = "000";
+                Logging.writeLog("Projector:  Queueing Powering Off");
             }
             else
             {
